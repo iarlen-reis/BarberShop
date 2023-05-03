@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import LoginImage from "/Images/Login.png";
 
@@ -44,7 +45,7 @@ const Login = () => {
                 <a href="#">
                   <FcGoogle />
                 </a>
-                <a href="#">Ainda não possui uma conta?</a>
+                <Link to="/register">Criar uma conta</Link>
               </LinkStyled>
             </ButtonContainer>
           </FormStyled>
