@@ -25,5 +25,11 @@ declare module 'styled-components' {
             big: string,
             veryBig: string,
         };
+        gap: {
+            small: string,
+            regular: string,
+            big: string,
+            veryBig: string,
+          };
     }
 }
