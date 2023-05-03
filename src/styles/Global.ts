@@ -10,6 +10,14 @@ export default createGlobalStyle`
     html {
         font-size: 62.5%;
     }
+
+    body {
+        background: ${({ theme }) => theme.colors.primary};
+    }
+
+    h1, h2, h3, h4, h5 {
+        font-family: ${({ theme }) => theme.font.itim};
+    }
 `;
 
 export const ContainerStyled = styled.div`
