@@ -1,6 +1,8 @@
 import React from "react";
 import { ContainerStyled } from "../../styles/Global";
 
+import { Link } from "react-router-dom";
+
 import RegisterImage from "/Images/Register.png";
 
 import {
@@ -44,7 +46,7 @@ const Register = () => {
             </label>
             <ButtonContainer>
               <ButtonStyled type="submit">Criar Conta</ButtonStyled>
-              <a href="#">Já possui uma conta?</a>
+              <Link to="/login">Já possui uma conta?</Link>
             </ButtonContainer>
           </FormStyled>
         </FormContainer>
