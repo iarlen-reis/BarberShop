@@ -14,6 +14,21 @@ export const TheadStyled = styled.thead`
     width: calc(100% / 4);
     padding-bottom: 1rem;
   }
+
+  @media (max-width: 800px) {
+    font-size: ${({ theme }) => theme.size.small};
+  }
+
+  @media (max-width: 580px) {
+    th {
+      width: calc(100% / 2);
+    }
+
+    th:nth-child(2),
+    th:nth-child(4) {
+      display: none;
+    }
+  }
 `;
 
 export const TBodyStyled = styled.tbody`
@@ -50,5 +65,20 @@ export const TBodyStyled = styled.tbody`
     :hover {
       color: rgba(255, 255, 255, 0.4);
     }
+  }
+
+  @media (max-width: 800px) {
+    font-size: ${({ theme }) => theme.size.verySmall};
+  }
+
+  @media (max-width: 580px) {
+    td:nth-child(2),
+    td:nth-child(4) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 350px) {
+    font-size: 1rem;
   }
 `;

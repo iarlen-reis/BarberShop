@@ -27,6 +27,28 @@ export const IntroducionStyled = styled.div`
     font-size: ${({ theme }) => theme.size.verySmall};
     font-family: ${({ theme }) => theme.font.poppins};
   }
+
+  @media (max-width: 500px) {
+    h1 {
+      font-size: ${({ theme }) => theme.size.superRegular};
+    }
+  }
+
+  @media (max-width: 400px) {
+    h1 {
+      font-size: ${({ theme }) => theme.size.regular};
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 350px) {
+    h1 {
+      font-size: ${({ theme }) => theme.size.small};
+    }
+  }
 `;
 
 export const ActionStyled = styled.div`
@@ -40,5 +62,11 @@ export const ActionStyled = styled.div`
     cursor: pointer;
 
     color: ${({ theme }) => theme.colors.textWhite};
+  }
+
+  @media (max-width: 350px) {
+    svg {
+      font-size: ${({ theme }) => theme.size.regular};
+    }
   }
 `;
