@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const HomeStyled = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
 `;
 
 export const WellcomeStyled = styled.div`
@@ -12,6 +12,21 @@ export const WellcomeStyled = styled.div`
   align-items: center;
 
   color: ${({ theme }) => theme.colors.textWhite};
+`;
+
+export const IntroducionStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  h1 {
+    font-size: ${({ theme }) => theme.size.big};
+  }
+
+  p {
+    font-size: ${({ theme }) => theme.size.verySmall};
+    font-family: ${({ theme }) => theme.font.poppins};
+  }
 `;
 
 export const ActionStyled = styled.div`

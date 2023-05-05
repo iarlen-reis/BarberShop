@@ -7,7 +7,12 @@ import { FiFilter } from "react-icons/fi";
 
 import InfoTable from "../../components/InfoTable/InfoTable";
 
-import { HomeStyled, WellcomeStyled, ActionStyled } from "./styles";
+import {
+  HomeStyled,
+  WellcomeStyled,
+  IntroducionStyled,
+  ActionStyled,
+} from "./styles";
 
 import { useModalContext } from "../../context/ModalContext";
 
@@ -20,7 +25,10 @@ const Home = () => {
     <ContainerStyled>
       <HomeStyled>
         <WellcomeStyled>
-          <h1>Bem-vindo, Iarlen Reis</h1>
+          <IntroducionStyled>
+            <h1>Bem-vindo, Iarlen Reis.</h1>
+            <p>Esses são seus horários reservados.</p>
+          </IntroducionStyled>
           <ActionStyled>
             <IoAddOutline onClick={setModal} />
             <FiFilter />

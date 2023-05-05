@@ -39,6 +39,17 @@ const InfoTable = () => {
             <MdDelete />
           </td>
         </tr>
+
+        <tr>
+          <td>Barba</td>
+          <td>05-05-2023</td>
+          <td>06-05-2023, 13:00</td>
+          <td>Cancelado</td>
+          <td>
+            <BsSearch />
+            <MdDelete />
+          </td>
+        </tr>
       </TBodyStyled>
     </TableStyled>
   );

@@ -35,6 +35,7 @@ export const FormStyled = styled.form`
 
   padding: 2rem;
 
+  border-radius: 4px;
   background: ${({ theme }) => theme.colors.textLink};
 
   label {
