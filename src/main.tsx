@@ -9,11 +9,15 @@ import { ThemeProvider } from 'styled-components'
 
 import { router } from './routes/routes'
 
+import { ModalProvider } from './context/ModalContext'
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ThemeProvider theme={Theme}>
-      <GlboalStyled />
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <ModalProvider>
+        <ThemeProvider theme={Theme}>
+            <GlboalStyled />
+            <RouterProvider router={router} />
+        </ThemeProvider>
+    </ModalProvider>
   </React.StrictMode>
 )

@@ -1,7 +1,14 @@
 import styled from "styled-components";
 
-export const ModalStyled = styled.div`
-  display: flex;
+interface IModal {
+  isModal: boolean;
+}
+
+export const ModalStyled =
+  styled.div <
+  IModal >
+  `
+  display: ${(props) => (props.isModal ? "flex" : "none")};
   flex-direction: column;
   align-items: center;
   justify-content: center;

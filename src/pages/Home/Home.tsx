@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { ContainerStyled } from "../../styles/Global";
 
@@ -9,8 +9,10 @@ import InfoTable from "../../components/InfoTable/InfoTable";
 
 import { HomeStyled, WellcomeStyled, ActionStyled } from "./styles";
 
+import { useModalContext } from "../../context/ModalContext";
+
 const Home = () => {
-  const [modal, setModal] = useState(false);
+  const { setModal } = useModalContext();
 
   return (
     <ContainerStyled>
@@ -18,7 +20,7 @@ const Home = () => {
         <WellcomeStyled>
           <h1>Bem-vindo, Iarlen Reis</h1>
           <ActionStyled>
-            <IoAddOutline onClick={() => setModal(!modal)} />
+            <IoAddOutline onClick={setModal} />
             <FiFilter />
           </ActionStyled>
         </WellcomeStyled>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FormEvent } from "react";
 
 import { AiOutlineClose } from "react-icons/ai";
 
@@ -9,9 +9,18 @@ import {
   CloseStyled,
 } from "./styles";
 
+import { useModalContext } from "../../context/ModalContext";
+
 const Modal = () => {
+  const { isModalOpen, setModal } = useModalContext();
+
+  const closeModal = (event: FormEvent) => {
+    event.preventDefault();
+    setModal();
+  };
+
   return (
-    <ModalStyled>
+    <ModalStyled isModal={isModalOpen}>
       <FormStyled>
         <label>
           <span>Serviço:</span>
@@ -29,7 +38,7 @@ const Modal = () => {
           <button>Agendar</button>
         </ButtonContainer>
         <CloseStyled>
-          <AiOutlineClose />
+          <AiOutlineClose onClick={(event) => closeModal(event)} />
         </CloseStyled>
       </FormStyled>
     </ModalStyled>
