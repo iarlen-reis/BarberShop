@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const HeaderStyled = styled.header`
   width: 100%;
-  background: ${({ theme }) => theme.colors.tertiary};
+  background: ${({ theme }) => theme.colors.secundary};
 
   margin-bottom: 2rem;
 `;

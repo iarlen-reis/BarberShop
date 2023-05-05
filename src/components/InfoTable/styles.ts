@@ -23,7 +23,7 @@ export const TBodyStyled = styled.tbody`
   color: ${({ theme }) => theme.colors.textWhite};
 
   tr:nth-child(odd) {
-    background: ${({ theme }) => theme.colors.tertiary};
+    background: ${({ theme }) => theme.colors.secundary};
   }
 
   td {

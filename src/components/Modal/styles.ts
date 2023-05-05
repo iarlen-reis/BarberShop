@@ -36,7 +36,7 @@ export const FormStyled = styled.form`
   padding: 2rem;
 
   border-radius: 4px;
-  background: ${({ theme }) => theme.colors.textLink};
+  background: ${({ theme }) => theme.colors.primary};
 
   label {
     width: 100%;
@@ -78,10 +78,15 @@ export const ButtonContainer = styled.div`
     font-size: ${({ theme }) => theme.size.regular};
 
     cursor: pointer;
+    transition: 0.5s;
 
     :nth-child(1) {
       color: ${({ theme }) => theme.colors.textWhite};
-      background: ${({ theme }) => theme.colors.primary};
+      background: ${({ theme }) => theme.colors.tertiary};
+
+      :hover {
+        background: ${({ theme }) => theme.colors.textError};
+      }
     }
 
     :nth-child(2) {
@@ -100,9 +105,14 @@ export const CloseStyled = styled.button`
   background: transparent;
 
   cursor: pointer;
+  transition: 0.5s;
 
   svg {
     font-size: ${({ theme }) => theme.size.regular};
     color: ${({ theme }) => theme.colors.textWhite};
+
+    :hover {
+      color: ${({ theme }) => theme.colors.textError};
+    }
   }
 `;
