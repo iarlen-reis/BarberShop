@@ -11,6 +11,8 @@ import { HomeStyled, WellcomeStyled, ActionStyled } from "./styles";
 
 import { useModalContext } from "../../context/ModalContext";
 
+import Modal from "../../components/Modal/Modal";
+
 const Home = () => {
   const { setModal } = useModalContext();
 
@@ -26,6 +28,7 @@ const Home = () => {
         </WellcomeStyled>
         <InfoTable />
       </HomeStyled>
+      <Modal />
     </ContainerStyled>
   );
 };

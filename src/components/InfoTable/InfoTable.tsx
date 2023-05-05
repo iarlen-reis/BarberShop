@@ -5,8 +5,6 @@ import { BsSearch } from "react-icons/bs";
 
 import { TableStyled, TheadStyled, TBodyStyled } from "./styles";
 
-import Modal from "../Modal/Modal";
-
 const InfoTable = () => {
   return (
     <TableStyled>
@@ -42,7 +40,6 @@ const InfoTable = () => {
           </td>
         </tr>
       </TBodyStyled>
-      <Modal />
     </TableStyled>
   );
 };
