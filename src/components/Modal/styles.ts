@@ -62,6 +62,14 @@ export const FormStyled = styled.form`
       cursor: pointer;
     }
   }
+
+  @media (max-width: 450px) {
+    width: 300px;
+  }
+
+  @media (max-width: 350px) {
+    width: 250px;
+  }
 `;
 
 export const ButtonContainer = styled.div`
