@@ -11,6 +11,8 @@ import * as EmailValidator from "email-validator";
 
 import { useForm } from "react-hook-form";
 
+import { loginUserWithEmail } from "../../hooks/useLoginUser";
+
 import {
   LoginStyled,
   InfoStyled,
@@ -22,10 +24,11 @@ import {
   LinkStyled,
   ErrorStyled,
 } from "./styles";
+import { getUser } from "../../hooks/useGetUser";
 
 interface IFormData {
-  email: string;
-  password: string;
+  displayEmail: string;
+  displayPassword: string;
 }
 
 const Login = () => {
@@ -35,8 +38,8 @@ const Login = () => {
     formState: { errors },
   } = useForm<IFormData>();
 
-  const onSubmit = (data: IFormData) => {
-    console.log(data);
+  const onSubmit = async (data: IFormData) => {
+    await loginUserWithEmail(data);
   };
 
   return (
@@ -55,15 +58,15 @@ const Login = () => {
               <span>E-mail:</span>
               <input
                 type="text"
-                {...register("email", {
+                {...register("displayEmail", {
                   required: true,
                   validate: (value) => EmailValidator.validate(value),
                 })}
               />
-              {errors.email?.type === "required" && (
+              {errors.displayEmail?.type === "required" && (
                 <ErrorStyled>O E-mail é obrigatório.</ErrorStyled>
               )}
-              {errors.email?.type === "validate" && (
+              {errors.displayEmail?.type === "validate" && (
                 <ErrorStyled>O E-mail inválido.</ErrorStyled>
               )}
             </label>
@@ -71,12 +74,15 @@ const Login = () => {
               <span>Senha:</span>
               <input
                 type="password"
-                {...register("password", { required: true, minLength: 8 })}
+                {...register("displayPassword", {
+                  required: true,
+                  minLength: 8,
+                })}
               />
-              {errors.password?.type === "required" && (
+              {errors.displayPassword?.type === "required" && (
                 <ErrorStyled>A senha é obrigatória.</ErrorStyled>
               )}
-              {errors.password?.type === "minLength" && (
+              {errors.displayPassword?.type === "minLength" && (
                 <ErrorStyled>
                   A senha deve ser maior que 7 caracteres.
                 </ErrorStyled>
