@@ -10,7 +10,7 @@ import Header from "../components/Header/index";
 
 export const router = createBrowserRouter([
   {
-    element: [<Header key={1} />],
+    element: <Header />,
     children: [
       {
         path: "/",
