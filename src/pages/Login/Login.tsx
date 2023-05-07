@@ -24,7 +24,6 @@ import {
   LinkStyled,
   ErrorStyled,
 } from "./styles";
-import { getUser } from "../../hooks/useGetUser";
 
 interface IFormData {
   displayEmail: string;
