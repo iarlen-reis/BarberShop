@@ -31,8 +31,6 @@ const Home = () => {
     if (!user.displayName) navigate("/login");
   }, [user]);
 
-  console.log(user);
-
   return (
     <ContainerStyled>
       <HomeStyled>
