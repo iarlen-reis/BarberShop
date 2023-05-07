@@ -11,13 +11,17 @@ import { router } from './routes/routes'
 
 import { ModalProvider } from './context/ModalContext'
 
+import { AuthProvider } from './context/AuthContext'
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ModalProvider>
-        <ThemeProvider theme={Theme}>
-            <GlboalStyled />
-            <RouterProvider router={router} />
-        </ThemeProvider>
-    </ModalProvider>
+    <AuthProvider>
+        <ModalProvider>
+            <ThemeProvider theme={Theme}>
+                <GlboalStyled />
+                <RouterProvider router={router} />
+            </ThemeProvider>
+        </ModalProvider>
+    </AuthProvider>
   </React.StrictMode>
 )

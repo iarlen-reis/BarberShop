@@ -18,15 +18,19 @@ import { useModalContext } from "../../context/ModalContext";
 
 import Modal from "../../components/Modal/Modal";
 
+import { useAuthContext } from "../../context/AuthContext";
+
 const Home = () => {
   const { setModal } = useModalContext();
+
+  const { user } = useAuthContext();
 
   return (
     <ContainerStyled>
       <HomeStyled>
         <WellcomeStyled>
           <IntroducionStyled>
-            <h1>Bem-vindo, Iarlen Reis.</h1>
+            <h1>Bem-vindo, {user.displayName}.</h1>
             <p>Esses são seus horários reservados.</p>
           </IntroducionStyled>
           <ActionStyled>
