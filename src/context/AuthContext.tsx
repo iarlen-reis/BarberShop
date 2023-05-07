@@ -24,7 +24,6 @@ export const AuthProvider = ({children}: IChildren) => {
     const [user, setUser] = useState(InitialState.user)
 
     useEffect(() => {
-        console.log('REVALIDEI')
         onAuthStateChanged(auth, (user) => {
             if(user) return setUser(user)
                 return setUser(InitialState.user)

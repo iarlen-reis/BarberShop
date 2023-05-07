@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 import { ContainerStyled } from "../../styles/Global";
 
 import { IoAddOutline } from "react-icons/io5";
@@ -29,10 +28,10 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user.displayName) {
-      return navigate("/login");
-    }
+    if (!user.displayName) navigate("/login");
   }, [user]);
+
+  console.log(user);
 
   return (
     <ContainerStyled>

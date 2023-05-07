@@ -46,14 +46,12 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const onSubmit = async (data: IFormData) => {
-    await useCreateUserWithEmail(data);
+  const onSubmit = (data: IFormData) => {
+    useCreateUserWithEmail(data).then(() => navigate("/"));
   };
 
   useEffect(() => {
-    if (user.displayName) {
-      return navigate("/");
-    }
+    user.displayName && navigate("/");
   }, [user]);
 
   return (
