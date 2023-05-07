@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import LoginImage from "/Images/Login.png";
 
@@ -30,6 +30,8 @@ interface IFormData {
   displayPassword: string;
 }
 
+import { useAuthContext } from "../../context/AuthContext";
+
 const Login = () => {
   const {
     register,
@@ -40,6 +42,10 @@ const Login = () => {
   const onSubmit = async (data: IFormData) => {
     await loginUserWithEmail(data);
   };
+
+  const { user } = useAuthContext();
+
+  if (user) Navigate({ to: "/" });
 
   return (
     <ContainerStyled>

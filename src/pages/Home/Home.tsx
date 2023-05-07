@@ -19,11 +19,14 @@ import { useModalContext } from "../../context/ModalContext";
 import Modal from "../../components/Modal/Modal";
 
 import { useAuthContext } from "../../context/AuthContext";
+import { Navigate } from "react-router-dom";
 
 const Home = () => {
   const { setModal } = useModalContext();
 
   const { user } = useAuthContext();
+
+  if (!user) Navigate({ to: "/login" });
 
   return (
     <ContainerStyled>

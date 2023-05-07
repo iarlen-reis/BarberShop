@@ -1,7 +1,7 @@
 import React from "react";
 import { ContainerStyled } from "../../styles/Global";
 
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import RegisterImage from "/Images/Register.png";
 
@@ -23,6 +23,8 @@ import {
 
 import useCreateUserWithEmail from "../../hooks/useCreateUser";
 
+import { useAuthContext } from "../../context/AuthContext";
+
 interface IFormData {
   displayName: string;
   displayEmail: string;
@@ -43,6 +45,10 @@ const Register = () => {
   const onSubmit = async (data: IFormData) => {
     await useCreateUserWithEmail(data);
   };
+
+  const { user } = useAuthContext();
+
+  if (user) Navigate({ to: "/" });
 
   return (
     <ContainerStyled>
