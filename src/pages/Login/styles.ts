@@ -5,6 +5,8 @@ export const LoginStyled = styled.section`
   display: grid;
   grid-template-columns: 1fr 1.5fr;
 
+  padding-bottom: 4rem;
+
   @media (max-width: 715px) {
     grid-template-columns: 1fr;
     grid-template-rows: 0.5fr 1fr;
