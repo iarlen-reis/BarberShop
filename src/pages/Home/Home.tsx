@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { ContainerStyled } from "../../styles/Global";
 
@@ -19,14 +19,20 @@ import { useModalContext } from "../../context/ModalContext";
 import Modal from "../../components/Modal/Modal";
 
 import { useAuthContext } from "../../context/AuthContext";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const { setModal } = useModalContext();
 
   const { user } = useAuthContext();
 
-  if (!user) Navigate({ to: "/login" });
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user.displayName) {
+      return navigate("/login");
+    }
+  }, [user]);
 
   return (
     <ContainerStyled>

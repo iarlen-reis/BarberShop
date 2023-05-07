@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, Navigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import LoginImage from "/Images/Login.png";
 
@@ -39,13 +39,18 @@ const Login = () => {
     formState: { errors },
   } = useForm<IFormData>();
 
+  const navigate = useNavigate();
+  const { user } = useAuthContext();
+
   const onSubmit = async (data: IFormData) => {
     await loginUserWithEmail(data);
   };
 
-  const { user } = useAuthContext();
-
-  if (user) Navigate({ to: "/" });
+  useEffect(() => {
+    if (user.displayName) {
+      return navigate("/");
+    }
+  }, [user]);
 
   return (
     <ContainerStyled>

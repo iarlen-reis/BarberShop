@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ContainerStyled } from "../../styles/Global";
 
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import RegisterImage from "/Images/Register.png";
 
@@ -42,13 +42,19 @@ const Register = () => {
 
   const watchPassword = watch("displayPassword");
 
+  const { user } = useAuthContext();
+
+  const navigate = useNavigate();
+
   const onSubmit = async (data: IFormData) => {
     await useCreateUserWithEmail(data);
   };
 
-  const { user } = useAuthContext();
-
-  if (user) Navigate({ to: "/" });
+  useEffect(() => {
+    if (user.displayName) {
+      return navigate("/");
+    }
+  }, [user]);
 
   return (
     <ContainerStyled>
