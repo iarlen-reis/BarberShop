@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { FormEvent, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import LoginImage from "/Images/Login.png";
@@ -30,6 +30,8 @@ interface IFormData {
   displayPassword: string;
 }
 
+import { loginWithGoogle } from "../../hooks/useCreateUserGoogle";
+
 import { useAuthContext } from "../../context/AuthContext";
 
 const Login = () => {
@@ -44,6 +46,11 @@ const Login = () => {
 
   const onSubmit = async (data: IFormData) => {
     await loginUserWithEmail(data);
+  };
+
+  const handleLoginWithGoogle = (event: FormEvent) => {
+    event.preventDefault();
+    loginWithGoogle();
   };
 
   useEffect(() => {
@@ -100,7 +107,7 @@ const Login = () => {
               <button>Entrar</button>
               <LinkStyled>
                 <a href="#">
-                  <FcGoogle />
+                  <FcGoogle onClick={(event) => handleLoginWithGoogle(event)} />
                 </a>
                 <Link to="/register">Criar uma conta</Link>
               </LinkStyled>
