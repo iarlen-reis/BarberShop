@@ -7,6 +7,10 @@ import { FcGoogle } from "react-icons/fc";
 
 import { ContainerStyled } from "../../styles/Global";
 
+import * as EmailValidator from "email-validator";
+
+import { useForm } from "react-hook-form";
+
 import {
   LoginStyled,
   InfoStyled,
@@ -16,9 +20,25 @@ import {
   FormStyled,
   ButtonContainer,
   LinkStyled,
+  ErrorStyled,
 } from "./styles";
 
+interface IFormData {
+  email: string;
+  password: string;
+}
+
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormData>();
+
+  const onSubmit = (data: IFormData) => {
+    console.log(data);
+  };
+
   return (
     <ContainerStyled>
       <LoginStyled>
@@ -30,17 +50,40 @@ const Login = () => {
           <ImageStyled src={LoginImage} alt="Imagem da página de login" />
         </InfoStyled>
         <FormContainer>
-          <FormStyled>
+          <FormStyled onSubmit={handleSubmit(onSubmit)}>
             <label>
               <span>E-mail:</span>
-              <input type="text" />
+              <input
+                type="text"
+                {...register("email", {
+                  required: true,
+                  validate: (value) => EmailValidator.validate(value),
+                })}
+              />
+              {errors.email?.type === "required" && (
+                <ErrorStyled>O E-mail é obrigatório.</ErrorStyled>
+              )}
+              {errors.email?.type === "validate" && (
+                <ErrorStyled>O E-mail inválido.</ErrorStyled>
+              )}
             </label>
             <label>
               <span>Senha:</span>
-              <input type="password" />
+              <input
+                type="password"
+                {...register("password", { required: true, minLength: 8 })}
+              />
+              {errors.password?.type === "required" && (
+                <ErrorStyled>A senha é obrigatória.</ErrorStyled>
+              )}
+              {errors.password?.type === "minLength" && (
+                <ErrorStyled>
+                  A senha deve ser maior que 7 caracteres.
+                </ErrorStyled>
+              )}
             </label>
             <ButtonContainer>
-              <button type="submit">Entrar</button>
+              <button>Entrar</button>
               <LinkStyled>
                 <a href="#">
                   <FcGoogle />
