@@ -21,10 +21,12 @@ import {
   ButtonStyled,
 } from "./styles";
 
+import useCreateUserWithEmail from "../../hooks/useCreateUser";
+
 interface IFormData {
-  name: string;
-  email: string;
-  password: string;
+  displayName: string;
+  displayEmail: string;
+  displayPassword: string;
   passwordConfirmation: string;
 }
 
@@ -36,10 +38,10 @@ const Register = () => {
     formState: { errors },
   } = useForm<IFormData>();
 
-  const watchPassword = watch("password");
+  const watchPassword = watch("displayPassword");
 
-  const onSubmit = (data: IFormData) => {
-    console.log(data);
+  const onSubmit = async (data: IFormData) => {
+    await useCreateUserWithEmail(data);
   };
 
   return (
@@ -59,9 +61,9 @@ const Register = () => {
               <input
                 type="text"
                 placeholder="José Santos"
-                {...register("name", { required: true })}
+                {...register("displayName", { required: true })}
               />
-              {errors.name?.type === "required" && (
+              {errors.displayName?.type === "required" && (
                 <ErrorForm message="O nome é obrigatório." />
               )}
             </label>
@@ -70,15 +72,15 @@ const Register = () => {
               <input
                 type="email"
                 placeholder="Email@gmail.com"
-                {...register("email", {
+                {...register("displayEmail", {
                   required: true,
                   validate: (value) => EmailValidator.validate(value),
                 })}
               />
-              {errors.email?.type === "required" && (
+              {errors.displayEmail?.type === "required" && (
                 <ErrorForm message="O E-mail é obrigatório." />
               )}
-              {errors.email?.type === "validate" && (
+              {errors.displayEmail?.type === "validate" && (
                 <ErrorForm message="O E-mail é inválido." />
               )}
             </label>
@@ -86,12 +88,15 @@ const Register = () => {
               <span>Senha:</span>
               <input
                 type="password"
-                {...register("password", { required: true, minLength: 8 })}
+                {...register("displayPassword", {
+                  required: true,
+                  minLength: 8,
+                })}
               />
-              {errors.password?.type === "required" && (
+              {errors.displayPassword?.type === "required" && (
                 <ErrorForm message="A senha é obrigtória." />
               )}
-              {errors.password?.type === "minLength" && (
+              {errors.displayPassword?.type === "minLength" && (
                 <ErrorForm message="A senha deve ser maior que 7 caracteres." />
               )}
             </label>
