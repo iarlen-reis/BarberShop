@@ -1,50 +1,54 @@
-import { User, onAuthStateChanged, signOut } from "firebase/auth";
+import { User, onAuthStateChanged, signOut, getAuth } from "firebase/auth";
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { auth } from "../services/firebase";
+import { app } from "../services/firebase";
+
 
 interface IUser {
-  user: User;
-  logout: () => void
+  user: User | null;
+  logout: () => void;
 }
 
 interface IChildren {
-    children: React.ReactNode
+  children: React.ReactNode;
 }
 
 const InitialState = {
-  // eslint-disable-next-line prettier/prettier
-  user: {} as User,
-  logout: () => ({})
+  user: {} as User | null,
+  logout: () => ({}),  
 };
 
 const AuthContext = createContext<IUser>(InitialState);
 
+export const AuthProvider = ({ children }: IChildren) => {
+  const auth = getAuth(app);
+  const [user, setUser] = useState<User | null>(InitialState.user);
 
-export const AuthProvider = ({children}: IChildren) => {
-    const [user, setUser] = useState(InitialState.user)
-
-    useEffect(() => {
+  useEffect(() => {
+    try {
         onAuthStateChanged(auth, (user) => {
-            if(user) return setUser(user)
-                return setUser(InitialState.user)
-            
-        })
-    }, [auth, user])
-
-    const logout = async () => {
-        try {
-         await signOut(auth)
-            
-        } catch (error) {
-            console.log(error)
-        }
+            if (user) return setUser(user);
+            setUser(null);
+          });
+    } catch (error) {
+        console.log(error)
     }
+  }, [auth, user]);
 
-    return (
-        <AuthContext.Provider value={{user, logout}}>{children}</AuthContext.Provider>
-    )
-}
+  const logout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
 export const useAuthContext = () => {
-    return useContext(AuthContext);
-}
+  return useContext(AuthContext);
+};

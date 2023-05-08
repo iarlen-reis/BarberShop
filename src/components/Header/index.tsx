@@ -23,7 +23,7 @@ const index = () => {
       <HeaderStyled>
         <HeaderContainer>
           <LogoStyled src={Logo} alt="Logo da página" />
-          {user.displayName && (
+          {user?.displayName && (
             <ButtonLogoutStyled onClick={handleLogout}>Sair</ButtonLogoutStyled>
           )}
         </HeaderContainer>
