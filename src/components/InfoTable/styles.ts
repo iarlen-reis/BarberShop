@@ -82,3 +82,33 @@ export const TBodyStyled = styled.tbody`
     font-size: 1rem;
   }
 `;
+
+export const NoFound = styled.div`
+  text-align: center;
+
+  h2 {
+    text-align: center;
+
+    font-size: ${({ theme }) => theme.size.big};
+
+    color: ${({ theme }) => theme.colors.textWhite};
+
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: ${({ theme }) => theme.size.regular};
+    font-family: ${({ theme }) => theme.font.poppins};
+
+    color: ${({ theme }) => theme.colors.textWhite};
+  }
+
+  svg {
+    font-size: ${({ theme }) => theme.size.regular};
+
+    color: ${({ theme }) => theme.colors.textWhite};
+  }
+`;
