@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import LoginImage from "/Images/Login.png";
 
@@ -32,6 +32,8 @@ interface IFormData {
 
 import { loginWithGoogle } from "../../hooks/useCreateUserGoogle";
 
+import { useAuthContext } from "../../context/AuthContext";
+
 const Login = () => {
   const {
     register,
@@ -39,13 +41,23 @@ const Login = () => {
     formState: { errors },
   } = useForm<IFormData>();
 
+  const { user } = useAuthContext();
+
+  const navigate = useNavigate();
+
   const onSubmit = async (data: IFormData) => {
-    await loginUserWithEmail(data);
+    loginUserWithEmail(data).then(() => navigate("/"));
   };
 
   const handleLoginWithGoogle = () => {
-    loginWithGoogle();
+    loginWithGoogle().then(() => navigate("/"));
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   return (
     <ContainerStyled>

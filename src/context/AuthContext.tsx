@@ -1,7 +1,7 @@
 import { User, onAuthStateChanged, signOut, getAuth } from "firebase/auth";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { app } from "../services/firebase";
-
+import Loading from "../components/Loading/Loading";
 
 interface IUser {
   user: User | null;
@@ -12,27 +12,24 @@ interface IChildren {
   children: React.ReactNode;
 }
 
-const InitialState = {
-  user: {} as User | null,
-  logout: () => ({}),  
-};
-
-const AuthContext = createContext<IUser>(InitialState);
+const AuthContext = createContext<IUser>({
+  user: null,
+  logout: async () => ({}),
+});
 
 export const AuthProvider = ({ children }: IChildren) => {
   const auth = getAuth(app);
-  const [user, setUser] = useState<User | null>(InitialState.user);
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    try {
-        onAuthStateChanged(auth, (user) => {
-            if (user) return setUser(user);
-            setUser(null);
-          });
-    } catch (error) {
-        console.log(error)
-    }
-  }, [auth, user]);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+      setLoading(false);
+    });
+
+    return unsubscribe;
+  }, [auth]);
 
   const logout = async () => {
     try {
@@ -41,6 +38,10 @@ export const AuthProvider = ({ children }: IChildren) => {
       console.log(error);
     }
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <AuthContext.Provider value={{ user, logout }}>

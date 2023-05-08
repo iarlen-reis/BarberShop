@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Navigate, BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import GlboalStyled from "./styles/Global";
 import { Theme } from "./styles/theme/theme";
@@ -39,18 +39,9 @@ function App() {
             <GlboalStyled />
             <Header />
             <Routes>
-              <Route
-                path="/"
-                element={user?.uid ? <Home /> : <Navigate to="/login" />}
-              />
-              <Route
-                path="/login"
-                element={!user?.uid ? <Login /> : <Navigate to="/" />}
-              />
-              <Route
-                path="/register"
-                element={!user?.uid ? <Register /> : <Navigate to="/" />}
-              />
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
               <Route path="/about" element={<About />} />
             </Routes>
           </ThemeProvider>

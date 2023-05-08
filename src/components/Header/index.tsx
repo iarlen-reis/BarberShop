@@ -11,11 +11,17 @@ import {
 
 import { useAuthContext } from "../../context/AuthContext";
 
+import { useNavigate } from "react-router-dom";
+
 const index = () => {
   const { user, logout } = useAuthContext();
 
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     logout();
+
+    navigate("/login");
   };
 
   return (
@@ -23,7 +29,7 @@ const index = () => {
       <HeaderStyled>
         <HeaderContainer>
           <LogoStyled src={Logo} alt="Logo da página" />
-          {user?.displayName && (
+          {user?.uid && user.uid !== "" && (
             <ButtonLogoutStyled onClick={handleLogout}>Sair</ButtonLogoutStyled>
           )}
         </HeaderContainer>

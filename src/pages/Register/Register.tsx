@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ContainerStyled } from "../../styles/Global";
 
 import { Link } from "react-router-dom";
@@ -30,6 +30,10 @@ interface IFormData {
   passwordConfirmation: string;
 }
 
+import { useNavigate } from "react-router-dom";
+
+import { useAuthContext } from "../../context/AuthContext";
+
 const Register = () => {
   const {
     register,
@@ -40,9 +44,21 @@ const Register = () => {
 
   const watchPassword = watch("displayPassword");
 
+  const { user } = useAuthContext();
+
+  const navigate = useNavigate();
+
   const onSubmit = async (data: IFormData) => {
     await useCreateUserWithEmail(data);
+
+    navigate("/");
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   return (
     <ContainerStyled>
