@@ -35,6 +35,8 @@ const Modal = () => {
 
   const closeModal = (event: FormEvent) => {
     event.preventDefault();
+    reset();
+
     setModal();
   };
 
@@ -46,6 +48,11 @@ const Modal = () => {
     reset();
 
     setModal();
+  };
+
+  const clearModalForm = (event: FormEvent) => {
+    event.preventDefault();
+    reset();
   };
 
   return (
@@ -84,7 +91,7 @@ const Modal = () => {
           )}
         </div>
         <ButtonContainer>
-          <button>Limpar</button>
+          <button onClick={(event) => clearModalForm(event)}>Limpar</button>
           <button>{loading ? "Agendando..." : "Agendar"}</button>
         </ButtonContainer>
         <CloseStyled>
