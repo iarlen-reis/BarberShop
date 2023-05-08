@@ -36,7 +36,7 @@ export const FormStyled = styled.form`
   padding: 2rem;
 
   border-radius: 4px;
-  background: ${({ theme }) => theme.colors.primary};
+  background: ${({ theme }) => theme.colors.secundary};
 
   label {
     width: 100%;
@@ -90,7 +90,7 @@ export const ButtonContainer = styled.div`
 
     :nth-child(1) {
       color: ${({ theme }) => theme.colors.textWhite};
-      background: ${({ theme }) => theme.colors.tertiary};
+      background: ${({ theme }) => theme.colors.primary};
 
       :hover {
         background: ${({ theme }) => theme.colors.textError};
