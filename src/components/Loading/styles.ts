@@ -12,5 +12,5 @@ export const LoadingStyled = styled.div`
   left: 0;
   right: 0;
 
-  background: ${({ theme }) => theme.colors.secundary};
+  background: #e36937;
 `;
