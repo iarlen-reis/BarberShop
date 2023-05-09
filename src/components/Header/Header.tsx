@@ -6,12 +6,16 @@ import {
   HeaderStyled,
   HeaderContainer,
   LogoStyled,
+  NavStyled,
+  ProfileStyled,
   ButtonLogoutStyled,
 } from "./styles";
 
+import { CgProfile } from "react-icons/cg";
+
 import { useAuthContext } from "../../context/AuthContext";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const index = () => {
   const { user, logout } = useAuthContext();
@@ -30,7 +34,20 @@ const index = () => {
         <HeaderContainer>
           <LogoStyled src={Logo} alt="Logo da página" />
           {user?.uid && user.uid !== "" && (
-            <ButtonLogoutStyled onClick={handleLogout}>Sair</ButtonLogoutStyled>
+            <NavStyled>
+              <li>
+                <ProfileStyled>
+                  <Link to="/profile">
+                    <CgProfile />
+                  </Link>
+                </ProfileStyled>
+              </li>
+              <li>
+                <ButtonLogoutStyled onClick={handleLogout}>
+                  Sair
+                </ButtonLogoutStyled>
+              </li>
+            </NavStyled>
           )}
         </HeaderContainer>
       </HeaderStyled>
