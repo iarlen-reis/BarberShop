@@ -8,11 +8,20 @@ import { TableStyled, TheadStyled, TBodyStyled, NoFound } from "./styles";
 
 import { getUserDocuments } from "../../hooks/useFetchDocuments";
 import Loading from "../Loading/Loading";
+import ServiceDetails from "../ServiceDetails/ServiceDetails";
+
+import { useModalContext } from "../../context/ModalContext";
 
 const InfoTable = () => {
   const { schedules, loading } = getUserDocuments();
 
+  const { useFetchDocument } = useModalContext();
+
   if (loading) return <Loading />;
+
+  const handleModal = (id: string) => {
+    useFetchDocument(id);
+  };
 
   return (
     <>
@@ -37,7 +46,7 @@ const InfoTable = () => {
                   <td>{schedule.scheduledDate}</td>
                   <td>{schedule.status}</td>
                   <td>
-                    <BsSearch />
+                    <BsSearch onClick={() => handleModal(schedule.id)} />
                     <MdDelete />
                   </td>
                 </tr>
@@ -52,6 +61,7 @@ const InfoTable = () => {
           </p>
         </NoFound>
       )}
+      <ServiceDetails />
     </>
   );
 };
