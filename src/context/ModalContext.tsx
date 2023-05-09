@@ -4,7 +4,6 @@ React,
 ReactNode, 
 createContext, 
 useContext, 
-useEffect, 
 useState 
 } from "react";
 
@@ -28,7 +27,6 @@ interface IChildren {
 }
 
 interface IDocument {
-  id: string;
   service: string;
   description: string;
   scheduledDate: string;
