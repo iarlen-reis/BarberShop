@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ContainerStyled } from "../../styles/Global";
 
 import { IoAddOutline } from "react-icons/io5";
@@ -19,8 +19,11 @@ import Modal from "../../components/Modal/Modal";
 
 import { useAuthContext } from "../../context/AuthContext";
 import { Navigate } from "react-router-dom";
+import Filter from "../../components/Filter/Filter";
 
 const Home = () => {
+  const [filter, setFilter] = useState(false);
+
   const { setModal } = useModalContext();
 
   const { user } = useAuthContext();
@@ -39,7 +42,8 @@ const Home = () => {
           </IntroducionStyled>
           <ActionStyled>
             <IoAddOutline onClick={setModal} />
-            <FiFilter />
+            <FiFilter onClick={() => setFilter(!filter)} />
+            <Filter isVisible={filter} />
           </ActionStyled>
         </WellcomeStyled>
         <InfoTable />
