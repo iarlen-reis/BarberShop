@@ -16,13 +16,17 @@ import { deleteDocument } from "../../hooks/useDeleteDocument";
 const InfoTable = () => {
   const { schedules, loading } = getUserDocuments();
 
-  const { useFetchDocument } = useModalContext();
+  const { useFetchDocument, filtered } = useModalContext();
 
   if (loading) return <Loading />;
 
+  const schedulesFilter = schedules?.filter((schedule) =>
+    schedule.status.includes(filtered),
+  );
+
   return (
     <>
-      {schedules && schedules.length > 0 ? (
+      {schedulesFilter && schedulesFilter.length > 0 ? (
         <TableStyled>
           <TheadStyled>
             <tr>
@@ -34,9 +38,9 @@ const InfoTable = () => {
             </tr>
           </TheadStyled>
           <TBodyStyled>
-            {schedules &&
-              schedules?.length > 0 &&
-              schedules.map((schedule) => (
+            {schedulesFilter &&
+              schedulesFilter?.length > 0 &&
+              schedulesFilter.map((schedule) => (
                 <tr key={schedule.id}>
                   <td>{schedule.service}</td>
                   <td>{schedule.createdAt}</td>
@@ -51,6 +55,14 @@ const InfoTable = () => {
           </TBodyStyled>
         </TableStyled>
       ) : (
+        <NoFound>
+          <h2>Nenhum agendamento {filtered} encontrado.</h2>
+          <p>
+            Clique em <IoAddOutline /> para agendar um horário.
+          </p>
+        </NoFound>
+      )}
+      {schedules && schedules.length < 0 && (
         <NoFound>
           <h2>Nenhum agendamento encontrado.</h2>
           <p>
