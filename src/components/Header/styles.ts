@@ -20,8 +20,14 @@ export const HeaderContainer = styled.div`
 `;
 
 export const LogoStyled = styled.img`
-  width: 60px;
-  height: 60px;
+  width: 190px;
+
+  @media (max-width: 390px) {
+    width: 150px;
+  }
+  @media (max-width: 320px) {
+    width: 110px;
+  }
 `;
 
 export const NavStyled = styled.div`

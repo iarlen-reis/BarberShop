@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Logo from "/Images/Login.png";
+import Logo from "/Images/Logo.png";
 
 import {
   HeaderStyled,
