@@ -19,7 +19,9 @@ const initalState = {
   // eslint-disable-next-line prettier/prettier
   document: {} as IDocument,
   useFetchDocument: () => ({}),
-  setModalDetails: () => ({})
+  setModalDetails: () => ({}),
+  filtered: '',
+  setFiltered: (filter: string) => ({}),
 };
 
 interface IChildren {
@@ -40,6 +42,8 @@ interface IModalContext {
   document: IDocument;
   useFetchDocument: (id: string) => void;
   setModalDetails: (state: boolean) => void;
+  filtered: string,
+  setFiltered: (filter: string) => void;
 }
 
 
@@ -50,6 +54,7 @@ export const ModalProvider = ({ children }: IChildren) => {
   const [isModalOpen, setIsModalOpen] = useState(initalState.isModalOpen);
   const [modalDetails, setModalDetails] = useState(initalState.modalDetails);
   const [document, setDocument] = useState<IDocument>(initalState.document);
+  const [filtered, setFiltered] = useState(initalState.filtered)
 
   const setModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -81,7 +86,10 @@ export const ModalProvider = ({ children }: IChildren) => {
         modalDetails, 
         document, 
         useFetchDocument, 
-        setModalDetails }}>
+        setModalDetails,
+        filtered,
+        setFiltered
+        }}>
       {children}
     </ModalContext.Provider>
   );
