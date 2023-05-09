@@ -32,7 +32,9 @@ const index = () => {
     <>
       <HeaderStyled>
         <HeaderContainer>
-          <LogoStyled src={Logo} alt="Logo da página" />
+          <Link to="/">
+            <LogoStyled src={Logo} alt="Logo da página" />
+          </Link>
           {user?.uid && user.uid !== "" && (
             <NavStyled>
               <li>
