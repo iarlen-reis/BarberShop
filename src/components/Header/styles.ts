@@ -24,10 +24,33 @@ export const LogoStyled = styled.img`
   height: 60px;
 `;
 
-export const ButtonLogoutStyled = styled.button`
-  max-width: 10rem;
-  width: 100%;
+export const NavStyled = styled.div`
+  display: flex;
+  align-items: center;
 
+  list-style: none;
+
+  gap: ${({ theme }) => theme.gap.regular};
+`;
+
+export const ProfileStyled = styled.div`
+  svg {
+    font-size: ${({ theme }) => theme.size.big};
+
+    cursor: pointer;
+
+    transition: 0.5s;
+
+    color: ${({ theme }) => theme.colors.textWhite};
+
+    :hover {
+      color: ${({ theme }) => theme.colors.tertiary};
+    }
+  }
+`;
+
+export const ButtonLogoutStyled = styled.button`
+  width: 8rem;
   font-family: ${({ theme }) => theme.font.itim};
   font-size: ${({ theme }) => theme.size.small};
 

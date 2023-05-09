@@ -6,7 +6,7 @@ import GlboalStyled from "./styles/Global";
 import { Theme } from "./styles/theme/theme";
 import { ThemeProvider } from "styled-components";
 
-import Header from "./components/Header/index";
+import Header from "./components/Header/Header";
 
 import { ModalProvider } from "./context/ModalContext";
 
@@ -15,22 +15,9 @@ import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
 import Register from "./pages/Register/Register";
 import About from "./pages/About/About";
-
-// auth
-import { onAuthStateChanged, getAuth, User } from "firebase/auth";
-import { app } from "./services/firebase";
+import Profile from "./pages/Profile/Profile";
 
 function App() {
-  const auth = getAuth(app);
-  const [user, setUser] = useState<User | null>();
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) return setUser(user);
-      setUser(null);
-    });
-  }, [auth, user]);
-
   return (
     <BrowserRouter>
       <AuthProvider>
@@ -41,6 +28,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="/register" element={<Register />} />
               <Route path="/about" element={<About />} />
             </Routes>
