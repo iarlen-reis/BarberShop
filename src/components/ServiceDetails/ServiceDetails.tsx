@@ -5,11 +5,9 @@ import {
   DetailsContainer,
   TitleStyled,
   TimeStyled,
-  DeleteStyled,
   CloseStyled,
 } from "./styles";
 
-import { MdDelete } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
 
 import { useModalContext } from "../../context/ModalContext";
@@ -35,12 +33,6 @@ const ServiceDetails = () => {
             Criado em: <span>- {document.createdAt}</span>
           </p>
         </TimeStyled>
-        <DeleteStyled>
-          <button>
-            <MdDelete />
-            Deletar
-          </button>
-        </DeleteStyled>
         <CloseStyled>
           <AiOutlineClose onClick={() => setModalDetails(false)} />
         </CloseStyled>

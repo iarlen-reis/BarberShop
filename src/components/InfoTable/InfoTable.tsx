@@ -11,6 +11,7 @@ import Loading from "../Loading/Loading";
 import ServiceDetails from "../ServiceDetails/ServiceDetails";
 
 import { useModalContext } from "../../context/ModalContext";
+import { deleteDocument } from "../../hooks/useDeleteDocument";
 
 const InfoTable = () => {
   const { schedules, loading } = getUserDocuments();
@@ -18,10 +19,6 @@ const InfoTable = () => {
   const { useFetchDocument } = useModalContext();
 
   if (loading) return <Loading />;
-
-  const handleModal = (id: string) => {
-    useFetchDocument(id);
-  };
 
   return (
     <>
@@ -46,8 +43,8 @@ const InfoTable = () => {
                   <td>{schedule.scheduledDate}</td>
                   <td>{schedule.status}</td>
                   <td>
-                    <BsSearch onClick={() => handleModal(schedule.id)} />
-                    <MdDelete />
+                    <BsSearch onClick={() => useFetchDocument(schedule.id)} />
+                    <MdDelete onClick={() => deleteDocument(schedule.id)} />
                   </td>
                 </tr>
               ))}
