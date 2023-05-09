@@ -52,6 +52,7 @@ export const IntroducionStyled = styled.div`
 `;
 
 export const ActionStyled = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.gap.regular};
