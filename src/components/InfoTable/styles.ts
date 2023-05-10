@@ -100,6 +100,7 @@ export const NoFound = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     font-size: ${({ theme }) => theme.size.regular};
     font-family: ${({ theme }) => theme.font.poppins};
 
@@ -110,5 +111,27 @@ export const NoFound = styled.div`
     font-size: ${({ theme }) => theme.size.regular};
 
     color: ${({ theme }) => theme.colors.textWhite};
+  }
+
+  @media (max-width: 470px) {
+    h2 {
+      font-size: ${({ theme }) => theme.size.regular};
+    }
+
+    p {
+      font-size: ${({ theme }) => theme.size.small};
+    }
+  }
+
+  @media (max-width: 375px) {
+    h2 {
+      width: 230px;
+      margin: 0 auto;
+      font-size: ${({ theme }) => theme.size.small};
+    }
+
+    p {
+      font-size: ${({ theme }) => theme.size.verySmall};
+    }
   }
 `;
