@@ -9,10 +9,11 @@ interface IFilterProps {
 }
 
 const Filter = ({ isVisible }: IFilterProps) => {
-  const { setFiltered } = useModalContext();
+  const { setFiltered, setFilter } = useModalContext();
 
   const handleSelect = (event: ChangeEvent<HTMLSelectElement>) => {
     setFiltered(String(event.target.value));
+    setFilter(false);
   };
 
   return (

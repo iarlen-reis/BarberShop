@@ -16,7 +16,7 @@ export const FilterStyled =
 
     font-family: ${({ theme }) => theme.font.poppins};
 
-  padding: 0.4rem;
+  padding: 0.5rem;
 
   cursor: pointer;
 
@@ -24,6 +24,6 @@ export const FilterStyled =
   border: none;
   border-radius: 4px;
 
-  color: ${({ theme }) => theme.colors.textWhite};
-  background: ${({ theme }) => theme.colors.secundary};
+  color: ${({ theme }) => theme.colors.textLink};
+  background: ${({ theme }) => theme.colors.textWhite};
 `;

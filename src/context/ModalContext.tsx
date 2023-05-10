@@ -22,6 +22,9 @@ const initalState = {
   setModalDetails: () => ({}),
   filtered: '',
   setFiltered: (filter: string) => ({}),
+  setFilter: (state: boolean) => ({}),
+  filter: false,
+
 };
 
 interface IChildren {
@@ -42,8 +45,11 @@ interface IModalContext {
   document: IDocument;
   useFetchDocument: (id: string) => void;
   setModalDetails: (state: boolean) => void;
-  filtered: string,
+  filtered: string;
   setFiltered: (filter: string) => void;
+  setFilter: (state: boolean) => void;
+  filter: boolean;
+
 }
 
 
@@ -55,6 +61,8 @@ export const ModalProvider = ({ children }: IChildren) => {
   const [modalDetails, setModalDetails] = useState(initalState.modalDetails);
   const [document, setDocument] = useState<IDocument>(initalState.document);
   const [filtered, setFiltered] = useState(initalState.filtered)
+  const [filter, setFilter] = useState(initalState.filter);
+
 
   const setModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -88,7 +96,9 @@ export const ModalProvider = ({ children }: IChildren) => {
         useFetchDocument, 
         setModalDetails,
         filtered,
-        setFiltered
+        setFiltered,
+        filter,
+        setFilter
         }}>
       {children}
     </ModalContext.Provider>

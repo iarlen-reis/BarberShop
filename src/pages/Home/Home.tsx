@@ -22,9 +22,7 @@ import { Navigate } from "react-router-dom";
 import Filter from "../../components/Filter/Filter";
 
 const Home = () => {
-  const [filter, setFilter] = useState(false);
-
-  const { setModal } = useModalContext();
+  const { setModal, filter, setFilter } = useModalContext();
 
   const { user } = useAuthContext();
 
