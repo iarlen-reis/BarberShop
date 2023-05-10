@@ -1,4 +1,13 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const AnimationMobile = keyframes`
+    from {
+        left: -50%;
+    }
+    to {
+        left: 0;
+    }
+`;
 
 export const HeaderStyled = styled.header`
   width: 100%;
@@ -8,6 +17,7 @@ export const HeaderStyled = styled.header`
 `;
 
 export const HeaderContainer = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -30,13 +40,40 @@ export const LogoStyled = styled.img`
   }
 `;
 
-export const NavStyled = styled.div`
-  display: flex;
+interface IMobile {
+  mobile: boolean;
+}
+
+export const NavStyled =
+  styled.div <
+  IMobile >
+  `
+  display: ${(props) => (props.mobile ? "flex" : "none")};
   align-items: center;
 
   list-style: none;
 
   gap: ${({ theme }) => theme.gap.regular};
+
+  @media (max-width: 580px) {
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    height: 100vh;
+    position: absolute;
+    top: 8rem;
+    left: 0;
+
+    animation:${AnimationMobile} ease-in-out 2s;
+
+
+    background: ${({ theme }) => theme.colors.secundary};
+  }
+
+  @media (max-width: 390px) {
+    width: 60%;
+    top: 5rem;
+  }
 `;
 
 export const ProfileStyled = styled.div`
@@ -74,5 +111,29 @@ export const ButtonLogoutStyled = styled.button`
 
   :hover {
     background: rgba(255, 0, 0, 0.8);
+  }
+`;
+
+export const MobileStyled = styled.div`
+  display: flex;
+  align-items: center;
+
+  display: none;
+
+  svg {
+    font-size: ${({ theme }) => theme.size.big};
+
+    cursor: pointer;
+    transition: 0.5s;
+
+    color: ${({ theme }) => theme.colors.textWhite};
+
+    :hover {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  @media (max-width: 580px) {
+    display: flex;
   }
 `;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Logo from "/Images/Logo.png";
 
@@ -9,9 +9,12 @@ import {
   NavStyled,
   ProfileStyled,
   ButtonLogoutStyled,
+  MobileStyled,
 } from "./styles";
 
 import { CgProfile } from "react-icons/cg";
+import { BiMenuAltRight } from "react-icons/bi";
+import { IoMdClose } from "react-icons/io";
 
 import { useAuthContext } from "../../context/AuthContext";
 
@@ -19,6 +22,7 @@ import { useNavigate, Link } from "react-router-dom";
 
 const index = () => {
   const { user, logout } = useAuthContext();
+  const [mobile, setMobile] = useState(false);
 
   const navigate = useNavigate();
 
@@ -36,7 +40,7 @@ const index = () => {
             <LogoStyled src={Logo} alt="Logo da página" />
           </Link>
           {user?.uid && user.uid !== "" && (
-            <NavStyled>
+            <NavStyled mobile={mobile}>
               <li>
                 <ProfileStyled>
                   <Link to="/profile">
@@ -51,6 +55,13 @@ const index = () => {
               </li>
             </NavStyled>
           )}
+          <MobileStyled>
+            {mobile ? (
+              <IoMdClose onClick={() => setMobile(!mobile)} />
+            ) : (
+              <BiMenuAltRight onClick={() => setMobile(!mobile)} />
+            )}
+          </MobileStyled>
         </HeaderContainer>
       </HeaderStyled>
       <Outlet />
