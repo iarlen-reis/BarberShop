@@ -35,9 +35,6 @@ export const LogoStyled = styled.img`
   @media (max-width: 390px) {
     width: 150px;
   }
-  @media (max-width: 320px) {
-    width: 110px;
-  }
 `;
 
 interface IMobile {
