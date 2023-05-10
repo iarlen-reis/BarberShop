@@ -69,7 +69,7 @@ export const NavStyled =
 
   @media (max-width: 390px) {
     width: 60%;
-    top: 5rem;
+    top: 6.8rem;
   }
 `;
 
