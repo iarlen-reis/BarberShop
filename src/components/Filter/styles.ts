@@ -26,4 +26,15 @@ export const FilterStyled =
 
   color: ${({ theme }) => theme.colors.textLink};
   background: ${({ theme }) => theme.colors.textWhite};
+
+  @media(max-width: 500px) {
+    top: 2.9rem;
+    padding: 0.4rem;
+    width: 100px;
+  }
+
+  @media(max-width: 400px) {
+    top: 2.5rem;
+    padding: 0.2rem;
+  }
 `;
