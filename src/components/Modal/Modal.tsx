@@ -60,20 +60,22 @@ const Modal = () => {
       <FormStyled onSubmit={handleSubmit(onSubmit)}>
         <label>
           <span>Serviço:</span>
-          <input
-            type="text"
-            placeholder="Corte, Barba, Pé de Cabelo.."
-            {...register("service", { required: true })}
-          />
+          <select {...register("service", { required: true })}>
+            <option value="">Selecione o serviço</option>
+            <option value="corte">Corte</option>
+            <option value="barba">Barba</option>
+            <option value="Corte + Barba">Corte + Barba</option>
+            <option value="Pé de cabelo">Pé do cabelo</option>
+          </select>
           {errors.service && errors.service.type === "required" && (
-            <ErrorForm message="O Serviço é obrigatório." />
+            <ErrorForm message="O serviço é obrigatório." />
           )}
         </label>
         <label>
           <span>Descrição:</span>
           <input
             type="text"
-            placeholder="Corte disfarçado e fazer a barba.."
+            placeholder="Corte Militar, Social.."
             {...register("description", { required: true })}
           />
           {errors.description && errors.description.type === "required" && (

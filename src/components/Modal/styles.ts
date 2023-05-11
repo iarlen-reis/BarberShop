@@ -52,6 +52,8 @@ export const FormStyled = styled.form`
   }
 
   input {
+    font-family: ${({ theme }) => theme.font.poppins};
+
     padding: 1rem;
 
     outline: none;
@@ -61,6 +63,17 @@ export const FormStyled = styled.form`
     :nth-child(1) {
       cursor: pointer;
     }
+  }
+
+  select {
+    font-family: ${({ theme }) => theme.font.poppins};
+    padding: 1rem;
+
+    outline: none;
+    border: none;
+    border-radius: 4px;
+
+    cursor: pointer;
   }
 
   @media (max-width: 450px) {
