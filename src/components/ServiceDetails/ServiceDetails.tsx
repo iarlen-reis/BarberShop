@@ -5,15 +5,23 @@ import {
   DetailsContainer,
   TitleStyled,
   TimeStyled,
+  DeleteStyled,
   CloseStyled,
 } from "./styles";
 
 import { AiOutlineClose } from "react-icons/ai";
 
 import { useModalContext } from "../../context/ModalContext";
+import { deleteDocument } from "../../hooks/useDeleteDocument";
 
 const ServiceDetails = () => {
   const { modalDetails, document, setModalDetails } = useModalContext();
+
+  const handleDeleteDocument = (id: string) => {
+    deleteDocument(id);
+
+    setModalDetails(false);
+  };
 
   return (
     <ServiceDetailsStyled details={modalDetails}>
@@ -36,6 +44,11 @@ const ServiceDetails = () => {
             Status: <span>- {document.status}</span>
           </p>
         </TimeStyled>
+        <DeleteStyled>
+          <button onClick={() => handleDeleteDocument(document.id)}>
+            Deletar
+          </button>
+        </DeleteStyled>
         <CloseStyled>
           <AiOutlineClose onClick={() => setModalDetails(false)} />
         </CloseStyled>

@@ -21,8 +21,8 @@ const initalState = {
   useFetchDocument: () => ({}),
   setModalDetails: () => ({}),
   filtered: '',
-  setFiltered: (filter: string) => ({}),
-  setFilter: (state: boolean) => ({}),
+  setFiltered: () => ({}),
+  setFilter: () => ({}),
   filter: false,
 
 };
@@ -37,6 +37,7 @@ interface IDocument {
   scheduledDate: string;
   createdAt: string;
   status: string,
+  id: string,
 }
 
 interface IModalContext {
@@ -75,8 +76,9 @@ export const ModalProvider = ({ children }: IChildren) => {
           const refDoc = await doc(db, "schedules", id);
           const docSnap = await getDoc(refDoc);
   
-          // eslint-disable-next-line prettier/prettier
-          setDocument(docSnap.data() as IDocument);
+          const docData = {...docSnap.data(), id: docSnap.id}
+          
+          setDocument(docData as IDocument);
         } catch (error) {
           console.log(error);
         }
