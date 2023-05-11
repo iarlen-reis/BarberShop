@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 
 const AnimationMobile = keyframes`
     from {
-        left: -50%;
+        left: -100%;
     }
     to {
         left: 0;
@@ -61,15 +61,26 @@ export const NavStyled =
     text-decoration: none;
   }
 
+  svg {
+    font-size: ${({ theme }) => theme.size.superRegular};
+
+    transition: 0.5s;
+
+    :hover {
+        color: rgba(255, 255, 255, 0.7);
+      }
+  }
+
   @media (max-width: 580px) {
     display: ${(props) => (props.mobile ? "flex" : "none")};
     flex-direction: column;
     justify-content: center;
-    width: 50%;
+    width: 100%;
     height: 100vh;
     position: absolute;
     top: 8rem;
     left: 0;
+    z-index: 2;
 
     animation:${AnimationMobile} ease-in-out 2s;
 
@@ -78,7 +89,6 @@ export const NavStyled =
   }
 
   @media (max-width: 390px) {
-    width: 60%;
     top: 6.6rem;
   }
 

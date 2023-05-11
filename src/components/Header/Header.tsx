@@ -15,6 +15,7 @@ import {
 import { CgProfile } from "react-icons/cg";
 import { BiMenuAltRight } from "react-icons/bi";
 import { IoMdClose } from "react-icons/io";
+import { BsInfoCircle } from "react-icons/bs";
 
 import { useAuthContext } from "../../context/AuthContext";
 
@@ -43,7 +44,9 @@ const index = () => {
           {user?.uid && user.uid !== "" ? (
             <NavStyled mobile={mobile}>
               <li onClick={() => setMobile(false)}>
-                <Link to="/about">Sobre</Link>
+                <Link to="/about">
+                  <BsInfoCircle />
+                </Link>
               </li>
               <li>
                 <ProfileStyled onClick={() => setMobile(!mobile)}>
@@ -61,7 +64,9 @@ const index = () => {
           ) : (
             <NavStyled mobile={mobile}>
               <li onClick={() => setMobile(false)}>
-                <Link to="/about">Sobre</Link>
+                <Link to="/about">
+                  <BsInfoCircle />
+                </Link>
               </li>
             </NavStyled>
           )}
