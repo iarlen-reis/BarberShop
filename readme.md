@@ -1,4 +1,4 @@
-<img src="/Images/Template.png" alt="image template">
+<img src="/public/Images/Template.png" alt="image template">
 
 ### BarberShop
 
