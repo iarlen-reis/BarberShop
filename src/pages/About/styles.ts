@@ -1,10 +1,70 @@
 import styled from "styled-components";
 
-export const AboutContainerStyled = styled.div`
-  width: 100%;
-  background: ${({ theme }) => theme.colors.primary};
+export const AboutStyled = styled.section`
+  min-height: 100vh;
+  display: flex;
+  align-items: start;
+
+  @media (max-width: 870px) {
+    flex-direction: column;
+  }
+`;
+
+export const DescriptionStyled = styled.div`
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+
+  gap: ${({ theme }) => theme.gap.regular};
+
+  color: ${({ theme }) => theme.colors.textWhite};
 
   h1 {
-    color: ${({ theme }) => theme.colors.white};
+    font-size: ${({ theme }) => theme.size.veryBig};
+  }
+
+  p {
+    font-size: ${({ theme }) => theme.size.small};
+    font-family: ${({ theme }) => theme.font.poppins};
+  }
+
+  @media (max-width: 1100px) {
+    width: 500px;
+  }
+
+  @media (max-width: 970px) {
+    width: 450px;
+  }
+
+  @media (max-width: 870px) {
+    width: 100%;
+  }
+
+  @media (max-width: 450px) {
+    h1 {
+      font-size: ${({ theme }) => theme.size.big};
+    }
+  }
+`;
+
+export const ImageStyled = styled.div`
+  width: 450px;
+  padding-top: 4rem;
+
+  img {
+    max-width: 100%;
+  }
+
+  @media (max-width: 870px) {
+    margin: 0 auto;
+    padding-top: 0;
+  }
+
+  @media (max-width: 490px) {
+    width: 350px;
+  }
+
+  @media (max-width: 390px) {
+    width: 270px;
   }
 `;
