@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const LoginStyled = styled.section`
   width: 100%;
+  height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1.5fr;
 
@@ -98,12 +99,14 @@ export const ImageStyled = styled.img`
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
 
   margin: 0 auto;
+  padding-top: 5rem;
 
   @media (max-width: 715px) {
     justify-content: start;
+    padding-top: 0;
   }
 `;
 
