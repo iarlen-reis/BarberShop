@@ -25,7 +25,11 @@ const Profile = () => {
     <ContainerStyled>
       <ProfileStyled>
         <ProfileImageStyled>
-          <img src={UserImage} alt="Imagem dp usuário" />
+          {user.photoURL ? (
+            <img src={user.photoURL} alt="Imagem do usuário" />
+          ) : (
+            <img src={UserImage} alt="Imagem do usuário" />
+          )}
         </ProfileImageStyled>
         <div>
           <ProfileNameStyled>{user?.displayName}</ProfileNameStyled>

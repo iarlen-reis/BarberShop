@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const ProfileStyled = styled.section`
   max-width: 450px;
+  height: 100vh;
+
   display: flex;
   flex-direction: column;
 
