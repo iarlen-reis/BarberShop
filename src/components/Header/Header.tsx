@@ -42,7 +42,7 @@ const index = () => {
           </Link>
           {user?.uid && user.uid !== "" ? (
             <NavStyled mobile={mobile}>
-              <li>
+              <li onClick={() => setMobile(false)}>
                 <Link to="/about">Sobre</Link>
               </li>
               <li>
@@ -60,7 +60,7 @@ const index = () => {
             </NavStyled>
           ) : (
             <NavStyled mobile={mobile}>
-              <li>
+              <li onClick={() => setMobile(false)}>
                 <Link to="/about">Sobre</Link>
               </li>
             </NavStyled>
