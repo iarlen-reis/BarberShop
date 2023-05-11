@@ -8,6 +8,7 @@ export const RegiterStyled = styled.section`
   grid-template-columns: 1fr 1.5fr;
 
   padding: 4rem 0rem;
+  padding-bottom: 4rem;
 
   @media (max-width: 715px) {
     padding-top: 1rem;
