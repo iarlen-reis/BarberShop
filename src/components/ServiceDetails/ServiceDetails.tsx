@@ -32,6 +32,9 @@ const ServiceDetails = () => {
           <p>
             Criado em: <span>- {document.createdAt}</span>
           </p>
+          <p>
+            Status: <span>- {document.status}</span>
+          </p>
         </TimeStyled>
         <CloseStyled>
           <AiOutlineClose onClick={() => setModalDetails(false)} />

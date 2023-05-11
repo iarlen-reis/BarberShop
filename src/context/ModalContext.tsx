@@ -36,6 +36,7 @@ interface IDocument {
   description: string;
   scheduledDate: string;
   createdAt: string;
+  status: string,
 }
 
 interface IModalContext {
