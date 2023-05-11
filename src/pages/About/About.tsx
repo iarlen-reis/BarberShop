@@ -1,6 +1,11 @@
 import React from "react";
 import { ContainerStyled } from "../../styles/Global";
-import { AboutStyled, DescriptionStyled, ImageStyled } from "./styles";
+import {
+  AboutStyled,
+  DescriptionStyled,
+  ImageStyled,
+  LinkStyled,
+} from "./styles";
 
 import AboutImage from "/Images/About.png";
 
@@ -29,6 +34,23 @@ function About() {
             pode filtrar os agendamentos através da situação dele, que pode ser:
             pendente, cancelado ou cancelado.
           </p>
+          <LinkStyled>
+            <h2>Link uteis:</h2>
+            <a
+              href="https://github.com/iarlen-reis/BarberShop"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub do Projeto
+            </a>
+            <a
+              href="https://firebase.google.com/docs?hl=pt-br"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Documentação do Firebase
+            </a>
+          </LinkStyled>
         </DescriptionStyled>
         <ImageStyled>
           <img src={AboutImage} alt="uma mulher marcando a lista de tarefas" />

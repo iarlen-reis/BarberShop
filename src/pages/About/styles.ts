@@ -23,6 +23,10 @@ export const DescriptionStyled = styled.div`
     font-size: ${({ theme }) => theme.size.veryBig};
   }
 
+  h2 {
+    font-size: ${({ theme }) => theme.size.regular};
+  }
+
   p {
     font-size: ${({ theme }) => theme.size.small};
     font-family: ${({ theme }) => theme.font.poppins};
@@ -43,6 +47,26 @@ export const DescriptionStyled = styled.div`
   @media (max-width: 450px) {
     h1 {
       font-size: ${({ theme }) => theme.size.big};
+    }
+  }
+`;
+
+export const LinkStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  gap: ${({ theme }) => theme.gap.small};
+
+  a {
+    font-size: ${({ theme }) => theme.size.small};
+    font-family: ${({ theme }) => theme.font.poppins};
+    text-decoration: none;
+
+    transition: 0.5s;
+    color: ${({ theme }) => theme.colors.textWhite};
+
+    :hover {
+      color: rgba(255, 255, 255, 0.7);
     }
   }
 `;
