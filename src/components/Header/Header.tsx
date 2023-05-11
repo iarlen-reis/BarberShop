@@ -28,6 +28,7 @@ const index = () => {
 
   const handleLogout = () => {
     logout();
+    setMobile(!mobile);
 
     navigate("/login");
   };
@@ -42,7 +43,7 @@ const index = () => {
           {user?.uid && user.uid !== "" && (
             <NavStyled mobile={mobile}>
               <li>
-                <ProfileStyled>
+                <ProfileStyled onClick={() => setMobile(!mobile)}>
                   <Link to="/profile">
                     <CgProfile />
                   </Link>

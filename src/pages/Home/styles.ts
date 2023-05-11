@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const HomeStyled = styled.section`
   display: flex;
+  height: 100vh;
   flex-direction: column;
   gap: 2rem;
 `;
