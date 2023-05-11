@@ -45,14 +45,24 @@ export const NavStyled =
   styled.div <
   IMobile >
   `
-  display: ${(props) => (props.mobile ? "flex" : "none")};
+  display: flex;
   align-items: center;
 
   list-style: none;
 
-  gap: ${({ theme }) => theme.gap.regular};
+  gap: ${({ theme }) => theme.gap.big};
+
+
+  a {
+    font-family: ${({ theme }) => theme.font.itim};
+    font-size: ${({ theme }) => theme.size.regular};
+    color: ${({ theme }) => theme.colors.textWhite};
+  
+    text-decoration: none;
+  }
 
   @media (max-width: 580px) {
+    display: ${(props) => (props.mobile ? "flex" : "none")};
     flex-direction: column;
     justify-content: center;
     width: 50%;
@@ -71,9 +81,14 @@ export const NavStyled =
     width: 60%;
     top: 6.6rem;
   }
+
+
 `;
 
 export const ProfileStyled = styled.div`
+  border-right: 1px solid ${({ theme }) => theme.colors.textWhite};
+  padding-right: 1rem;
+
   svg {
     font-size: ${({ theme }) => theme.size.big};
 
@@ -86,6 +101,14 @@ export const ProfileStyled = styled.div`
     :hover {
       color: ${({ theme }) => theme.colors.tertiary};
     }
+  }
+
+  @media (max-width: 580px) {
+    padding-right: 0;
+    border-right: none;
+
+    padding-bottom: 1rem;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.textWhite};
   }
 `;
 

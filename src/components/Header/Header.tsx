@@ -40,8 +40,11 @@ const index = () => {
           <Link to="/">
             <LogoStyled src={Logo} alt="Logo da página" />
           </Link>
-          {user?.uid && user.uid !== "" && (
+          {user?.uid && user.uid !== "" ? (
             <NavStyled mobile={mobile}>
+              <li>
+                <Link to="/about">Sobre</Link>
+              </li>
               <li>
                 <ProfileStyled onClick={() => setMobile(!mobile)}>
                   <Link to="/profile">
@@ -53,6 +56,12 @@ const index = () => {
                 <ButtonLogoutStyled onClick={handleLogout}>
                   Sair
                 </ButtonLogoutStyled>
+              </li>
+            </NavStyled>
+          ) : (
+            <NavStyled mobile={mobile}>
+              <li>
+                <Link to="/about">Sobre</Link>
               </li>
             </NavStyled>
           )}
