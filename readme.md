@@ -10,7 +10,7 @@
 </p>
 
 <p>
-    A aplicação possui autenticação com e-mail/senha e com uma Google, onde
+    A aplicação possui autenticação com e-mail/senha e Google, onde
     o usuário pode se conectar pelo método que preferir, a autenticação é feita
     utilizando Firebase Authentication. Para armazenar os agendamentos dos
     clientes foi utilizado o Cloud Firestore.
