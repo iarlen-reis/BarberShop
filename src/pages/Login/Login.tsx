@@ -11,8 +11,6 @@ import * as EmailValidator from "email-validator";
 
 import { useForm } from "react-hook-form";
 
-import { loginUserWithEmail } from "../../hooks/useLoginUser";
-
 import {
   LoginStyled,
   InfoStyled,
@@ -30,8 +28,6 @@ interface IFormData {
   displayPassword: string;
 }
 
-import { loginWithGoogle } from "../../hooks/useCreateUserGoogle";
-
 import { useAuthContext } from "../../context/AuthContext";
 
 const Login = () => {
@@ -41,7 +37,7 @@ const Login = () => {
     formState: { errors },
   } = useForm<IFormData>();
 
-  const { user } = useAuthContext();
+  const { user, loginWithGoogle, loginUserWithEmail } = useAuthContext();
 
   const navigate = useNavigate();
 

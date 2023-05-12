@@ -47,7 +47,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data: IFormData) => {
-    useCreateUserWithEmail(data);
+    await useCreateUserWithEmail(data);
 
     navigate("/");
   };
