@@ -76,6 +76,7 @@ const Modal = () => {
           <input
             type="text"
             placeholder="Corte Militar, Social.."
+            autoComplete="off"
             {...register("description", { required: true })}
           />
           {errors.description && errors.description.type === "required" && (

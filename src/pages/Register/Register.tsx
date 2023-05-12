@@ -74,6 +74,7 @@ const Register = () => {
               <span>Nome:</span>
               <input
                 type="text"
+                autoComplete="off"
                 placeholder="José Santos"
                 {...register("displayName", { required: true })}
               />
@@ -85,6 +86,7 @@ const Register = () => {
               <span>E-mail:</span>
               <input
                 type="email"
+                autoComplete="off"
                 placeholder="Email@gmail.com"
                 {...register("displayEmail", {
                   required: true,

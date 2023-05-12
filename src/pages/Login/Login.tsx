@@ -71,6 +71,7 @@ const Login = () => {
               <span>E-mail:</span>
               <input
                 type="text"
+                autoComplete="off"
                 {...register("displayEmail", {
                   required: true,
                   validate: (value) => EmailValidator.validate(value),
