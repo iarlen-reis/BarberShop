@@ -40,8 +40,8 @@ export const LiStyled =
     color: ${({ theme }) => theme.colors.textBack};
     background: ${(props) =>
       props.current
-        ? props.theme.colors.tertiary
-        : props.theme.colors.textWhite};
+        ? props.theme.colors.textWhite
+        : props.theme.colors.tertiary};
 
     :hover {
         background: ${({ theme }) => theme.colors.tertiary};
