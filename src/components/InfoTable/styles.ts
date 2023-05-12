@@ -45,6 +45,16 @@ export const TBodyStyled = styled.tbody`
     margin-bottom: 1.6rem;
   }
 
+  td:nth-child(1) {
+    cursor: pointer;
+
+    transition: 0.5s;
+
+    :hover {
+      color: ${({ theme }) => theme.colors.tertiary};
+    }
+  }
+
   td:nth-child(5) {
     display: flex;
     align-items: center;

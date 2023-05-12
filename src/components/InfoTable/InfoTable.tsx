@@ -51,7 +51,9 @@ const InfoTable = () => {
               currentDocs?.length > 0 &&
               currentDocs.map((schedule) => (
                 <tr key={schedule.id}>
-                  <td>{schedule.service}</td>
+                  <td onClick={() => useFetchDocument(schedule.id)}>
+                    {schedule.service}
+                  </td>
                   <td>{schedule.createdAt}</td>
                   <td>{schedule.scheduledDate}</td>
                   <td>{schedule.status}</td>
