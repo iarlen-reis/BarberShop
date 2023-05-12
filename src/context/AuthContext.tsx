@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   signOut,
   getAuth,
+  deleteUser,
   createUserWithEmailAndPassword,
   updateProfile,
   GoogleAuthProvider,
@@ -24,7 +25,8 @@ interface IAuthContext {
   loginWithGoogle: () => Promise<User>;
   loginUserWithEmail: (
     userData: IUserData
-  ) => Promise<UserCredential>
+  ) => Promise<UserCredential>;
+  DeleteUser: () => void;
 }
 
 interface IChildren {
@@ -50,6 +52,7 @@ const AuthContext = createContext<IAuthContext>({
   loginUserWithEmail: async () => {
     throw new Error("AuthContext não foi inicializado corretamente.");
   },
+  DeleteUser: () => ({}),
 
   });
 
@@ -107,6 +110,16 @@ export const AuthProvider = ({ children }: IChildren) => {
         throw error;
     }
   };
+
+  const DeleteUser = async () => {
+    try {
+        if(!auth.currentUser) return;
+
+        await deleteUser(auth.currentUser);
+    } catch (error) {
+        console.log(error)
+    }
+  }
   
   // logout user.
   const logout = async () => {
@@ -128,7 +141,8 @@ export const AuthProvider = ({ children }: IChildren) => {
         logout,
         useCreateUserWithEmail,
         loginWithGoogle,
-        loginUserWithEmail
+        loginUserWithEmail,
+        DeleteUser,
      }}
     >
       {children}
