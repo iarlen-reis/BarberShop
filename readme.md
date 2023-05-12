@@ -27,6 +27,7 @@
 - [x] Cancelar agendamentos de serviço.
 - [x] Verificar serviços agendados.
 - [x] Filtro agendamentos por status.
+- [x] Paginação (9 serviços por página).
 - [x] Responsividade.
 - [ ] Painel administrativo.
 - [ ] Portfolio de serviços.
