@@ -81,7 +81,7 @@ const InfoTable = () => {
           </p>
         </NoFound>
       )}
-      {schedulesFilter && schedulesFilter.length > 0 && (
+      {schedulesFilter && schedulesFilter.length > 9 && (
         <Pagination
           docs={schedulesFilter && schedulesFilter.length}
           docsPerPage={docsPerPage}
