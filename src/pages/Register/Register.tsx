@@ -21,8 +21,6 @@ import {
   ButtonStyled,
 } from "./styles";
 
-import useCreateUserWithEmail from "../../hooks/useCreateUser";
-
 interface IFormData {
   displayName: string;
   displayEmail: string;
@@ -44,12 +42,12 @@ const Register = () => {
 
   const watchPassword = watch("displayPassword");
 
-  const { user } = useAuthContext();
+  const { user, useCreateUserWithEmail } = useAuthContext();
 
   const navigate = useNavigate();
 
   const onSubmit = async (data: IFormData) => {
-    await useCreateUserWithEmail(data);
+    useCreateUserWithEmail(data);
 
     navigate("/");
   };
