@@ -29,6 +29,7 @@
 - [x] Filtro agendamentos por status.
 - [x] Paginação (9 serviços por página).
 - [x] Responsividade.
+- [ ] Deletar conta.
 - [ ] Painel administrativo.
 - [ ] Portfolio de serviços.
 
