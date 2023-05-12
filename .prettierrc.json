@@ -6,14 +6,5 @@
     "singleQuote": false,
     "jsxSingleQuote": false,
     "trailingComma": "all",
-    "parser": "flow",
-    "overrides": [
-        {
-          "files": "*.ts",
-          "options": {
-            "parser": "typescript",
-            "as": { "allowAsParameter": "true" }
-          }
-        }
-      ]
+    "parser": "flow"
   }
