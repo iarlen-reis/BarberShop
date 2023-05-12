@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { MdDelete } from "react-icons/md";
 import { BsSearch } from "react-icons/bs";
@@ -13,7 +13,12 @@ import ServiceDetails from "../ServiceDetails/ServiceDetails";
 import { useModalContext } from "../../context/ModalContext";
 import { deleteDocument } from "../../hooks/useDeleteDocument";
 
+import Pagination from "../Pagination/Pagination";
+
 const InfoTable = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [docsPerPage, setDocsPerPage] = useState(9);
+
   const { schedules, loading } = getUserDocuments();
 
   const { useFetchDocument, filtered } = useModalContext();
@@ -24,9 +29,13 @@ const InfoTable = () => {
     schedule.status.includes(filtered),
   );
 
+  const indexOfLastDoc = currentPage * docsPerPage;
+  const indexOfFirstDoc = indexOfLastDoc - docsPerPage;
+  const currentDocs = schedulesFilter?.slice(indexOfFirstDoc, indexOfLastDoc);
+
   return (
     <>
-      {schedulesFilter && schedulesFilter.length > 0 ? (
+      {currentDocs && currentDocs.length > 0 ? (
         <TableStyled>
           <TheadStyled>
             <tr>
@@ -38,9 +47,9 @@ const InfoTable = () => {
             </tr>
           </TheadStyled>
           <TBodyStyled>
-            {schedulesFilter &&
-              schedulesFilter?.length > 0 &&
-              schedulesFilter.map((schedule) => (
+            {currentDocs &&
+              currentDocs?.length > 0 &&
+              currentDocs.map((schedule) => (
                 <tr key={schedule.id}>
                   <td>{schedule.service}</td>
                   <td>{schedule.createdAt}</td>
@@ -62,13 +71,21 @@ const InfoTable = () => {
           </p>
         </NoFound>
       )}
-      {schedules && schedules.length < 0 && (
+      {currentDocs && currentDocs.length < 0 && (
         <NoFound>
           <h2>Nenhum agendamento encontrado.</h2>
           <p>
             Clique em <IoAddOutline /> para agendar um horário.
           </p>
         </NoFound>
+      )}
+      {schedulesFilter && schedulesFilter.length > 0 && (
+        <Pagination
+          docs={schedulesFilter && schedulesFilter.length}
+          docsPerPage={docsPerPage}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       )}
       <ServiceDetails />
     </>
