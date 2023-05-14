@@ -38,9 +38,15 @@ const index = () => {
     <>
       <HeaderStyled>
         <HeaderContainer>
-          <Link to="/">
-            <LogoStyled src={Logo} alt="Logo da página" />
-          </Link>
+          {user?.uid && user.uid !== "" ? (
+            <Link to="/">
+              <LogoStyled src={Logo} alt="Logo da página" />
+            </Link>
+          ) : (
+            <Link to="/login">
+              <LogoStyled src={Logo} alt="Logo da página" />
+            </Link>
+          )}
           {user?.uid && user.uid !== "" ? (
             <NavStyled mobile={mobile}>
               <li onClick={() => setMobile(false)}>
