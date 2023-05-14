@@ -23,15 +23,16 @@
 
 ## Funcionalidades
 - [x] Autenticação com E-mail e Google.
+- [x] Deletar conta.
 - [x] Agendamento de serviço.
 - [x] Cancelar agendamentos de serviço.
 - [x] Verificar serviços agendados.
 - [x] Filtro agendamentos por status.
 - [x] Paginação (9 serviços por página).
+- [x] Quantidade de serviços no perfil (pendentes, cancelados e finalizados).
 - [x] Responsividade.
-- [ ] Deletar conta.
-- [ ] Painel administrativo.
-- [ ] Portfolio de serviços.
+- [ ] Painel administrativo (gereciador para o barbeiro).
+- [ ] Portfolio de serviços (Serviços do barbeiro).
 
 ## Ferramentas
 
