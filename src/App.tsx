@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import GlboalStyled from "./styles/Global";
 import { Theme } from "./styles/theme/theme";
 import { ThemeProvider } from "styled-components";
+import { ToastContainer } from "react-toastify";
 
 import Header from "./components/Header/Header";
 
@@ -23,6 +24,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <ModalProvider>
+          <ToastContainer />
           <ThemeProvider theme={Theme}>
             <GlboalStyled />
             <Header />

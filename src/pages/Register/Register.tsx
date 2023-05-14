@@ -33,6 +33,8 @@ interface IFormData {
 import { useNavigate } from "react-router-dom";
 
 import { useAuthContext } from "../../context/AuthContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const {
@@ -44,14 +46,13 @@ const Register = () => {
 
   const watchPassword = watch("displayPassword");
 
-  const { user, useCreateUserWithEmail } = useAuthContext();
+  const { user, error, setError, useCreateUserWithEmail } = useAuthContext();
 
   const navigate = useNavigate();
 
   const onSubmit = async (data: IFormData) => {
     await useCreateUserWithEmail(data);
-
-    navigate("/");
+    if (user) navigate("/");
   };
 
   useEffect(() => {
@@ -59,6 +60,15 @@ const Register = () => {
       navigate("/");
     }
   }, [user, navigate]);
+
+  useEffect(() => {
+    if (error !== "") {
+      toast.error(error, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      setError("");
+    }
+  }, [error]);
 
   return (
     <ContainerStyled>

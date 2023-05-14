@@ -28,6 +28,7 @@ import Loading from "../components/Loading/Loading";
 const AuthContext = createContext<IAuthContext>({
   user: null,
   error: '',
+  setError:() => ({}),
   logout: async () => ({}),
   useCreateUserWithEmail: () => ({}),
   loginWithGoogle: () => Promise.resolve({} as User),
@@ -125,6 +126,7 @@ export const AuthProvider = ({ children }: IChildren) => {
       value={{ 
         user,
         error,
+        setError,
         logout,
         useCreateUserWithEmail,
         loginWithGoogle,
