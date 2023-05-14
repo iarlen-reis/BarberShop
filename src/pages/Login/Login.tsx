@@ -26,6 +26,7 @@ import {
 import { ILogin } from "../../interfaces/Login";
 
 import { useAuthContext } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const {
@@ -34,12 +35,15 @@ const Login = () => {
     formState: { errors },
   } = useForm<ILogin>();
 
-  const { user, loginWithGoogle, loginUserWithEmail } = useAuthContext();
+  const { user, error, setError, loginWithGoogle, loginUserWithEmail } =
+    useAuthContext();
 
   const navigate = useNavigate();
 
   const onSubmit = async (data: ILogin) => {
-    loginUserWithEmail(data).then(() => navigate("/"));
+    loginUserWithEmail(data);
+
+    if (user) navigate("/");
   };
 
   const handleLoginWithGoogle = () => {
@@ -51,6 +55,15 @@ const Login = () => {
       navigate("/");
     }
   }, [user, navigate]);
+
+  useEffect(() => {
+    if (error !== "") {
+      toast.error(error, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      setError("");
+    }
+  }, [error]);
 
   return (
     <ContainerStyled>

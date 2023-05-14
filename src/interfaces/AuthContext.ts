@@ -22,6 +22,6 @@ export interface IAuthContext {
   logout: () => void;
   useCreateUserWithEmail: (userData: ICreateUserWithEmail) => void;
   loginWithGoogle: () => Promise<User>;
-  loginUserWithEmail: (userData: IUserData) => Promise<UserCredential>;
+  loginUserWithEmail: (userData: IUserData) => void;
   DeleteUser: () => void;
 }

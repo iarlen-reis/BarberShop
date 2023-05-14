@@ -32,9 +32,7 @@ const AuthContext = createContext<IAuthContext>({
   logout: async () => ({}),
   useCreateUserWithEmail: () => ({}),
   loginWithGoogle: () => Promise.resolve({} as User),
-  loginUserWithEmail: async () => {
-    throw new Error("AuthContext não foi inicializado corretamente.");
-  },
+  loginUserWithEmail: () => ({}),
   DeleteUser: () => ({}),
   
   });
@@ -92,9 +90,14 @@ export const AuthProvider = ({ children }: IChildren) => {
           ) as UserCredential;
     
           return user
-    } catch (error) {
-        console.log(error);
-        throw error;
+    } catch (error: any) {
+        if(error.message.includes('user-not-found')) {
+            setError("Usuário não encontrado.")
+        } else if (error.message.includes('wrong-password')) {
+            setError('Senha inválida.')
+        } else {
+            setError("Ocorreu um error, por favor tente mais tarde.")
+        }
     }
   };
 
