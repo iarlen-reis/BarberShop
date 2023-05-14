@@ -2,11 +2,9 @@ import React, { ChangeEvent } from "react";
 
 import { FilterStyled } from "./styles";
 
-import { useModalContext } from "../../context/ModalContext";
+import { IFilterProps } from "../../interfaces/Filter";
 
-interface IFilterProps {
-  isVisible: boolean;
-}
+import { useModalContext } from "../../context/ModalContext";
 
 const Filter = ({ isVisible }: IFilterProps) => {
   const { setFiltered, setFilter } = useModalContext();
