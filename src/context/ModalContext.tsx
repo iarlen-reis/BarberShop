@@ -1,7 +1,6 @@
 import 
 React, 
 { 
-ReactNode, 
 createContext, 
 useContext, 
 useState 
@@ -10,13 +9,12 @@ useState
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../services/firebase";
 
+import {IChildren, IDocument, IModalContext} from '../interfaces/ModalContext'
+
 const initalState = {
   isModalOpen: false,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setModal: () => {},
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setModal: () => ({}),
   modalDetails: false,
-  // eslint-disable-next-line prettier/prettier
   document: {} as IDocument,
   useFetchDocument: () => ({}),
   setModalDetails: () => ({}),
@@ -26,35 +24,6 @@ const initalState = {
   filter: false,
 
 };
-
-interface IChildren {
-  children: ReactNode;
-}
-
-interface IDocument {
-  service: string;
-  description: string;
-  scheduledDate: string;
-  createdAt: string;
-  status: string,
-  id: string,
-}
-
-interface IModalContext {
-  isModalOpen: boolean;
-  setModal: () => void;
-  modalDetails: boolean;
-  document: IDocument;
-  useFetchDocument: (id: string) => void;
-  setModalDetails: (state: boolean) => void;
-  filtered: string;
-  setFiltered: (filter: string) => void;
-  setFilter: (state: boolean) => void;
-  filter: boolean;
-
-}
-
-
 
 export const ModalContext = createContext<IModalContext>(initalState);
 
