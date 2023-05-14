@@ -2,9 +2,7 @@ import React from "react";
 
 import { ErrorStyled } from "./styles";
 
-interface IErrorForm {
-  message: string;
-}
+import { IErrorForm } from "../../interfaces/ErrorForm";
 
 const ErrorForm = ({ message }: IErrorForm) => {
   return <ErrorStyled>{message}</ErrorStyled>;
