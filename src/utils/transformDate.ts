@@ -1,10 +1,6 @@
-interface IFormData {
-  service: string;
-  description: string;
-  scheduledDate: string;
-}
+import { IModal } from "../interfaces/Modal";
 
-export const toLocalDate = (data: IFormData) => {
+export const toLocalDate = (data: IModal) => {
   data.scheduledDate = new Date(data.scheduledDate).toLocaleString();
 
   return data;
