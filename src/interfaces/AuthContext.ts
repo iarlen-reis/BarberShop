@@ -17,6 +17,7 @@ export interface IChildren {
 
 export interface IAuthContext {
   user: User | null;
+  error: string;
   logout: () => void;
   useCreateUserWithEmail: (userData: ICreateUserWithEmail) => void;
   loginWithGoogle: () => Promise<User>;

@@ -27,6 +27,7 @@ import Loading from "../components/Loading/Loading";
 
 const AuthContext = createContext<IAuthContext>({
   user: null,
+  error: '',
   logout: async () => ({}),
   useCreateUserWithEmail: () => ({}),
   loginWithGoogle: () => Promise.resolve({} as User),
@@ -41,6 +42,7 @@ export const AuthProvider = ({ children }: IChildren) => {
   const auth = getAuth(app);
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState("")
 
   // check if the user is logged in.
   useEffect(() => {
@@ -53,19 +55,22 @@ export const AuthProvider = ({ children }: IChildren) => {
 
   // creates a new user using email and password.
   const useCreateUserWithEmail = async (userData: ICreateUserWithEmail) => {
-      try {
+    try {
+      setError("")
       const { user } = await createUserWithEmailAndPassword(
-          auth,
-          userData.displayEmail,
-          userData.displayPassword,
+        auth,
+        userData.displayEmail,
+        userData.displayPassword,
       );
 
       await updateProfile(user, { displayName: userData.displayName });
 
       return;
-      } catch (error) {
-      console.log(error);
-      }
+      } catch (error: any) {
+      error.message.includes('email-already')
+        ? setError("E-mail já em uso.") 
+        : setError('Ocorreu um error, tente mais tarde.')
+     }
   };
 
   // login with google.
@@ -119,6 +124,7 @@ export const AuthProvider = ({ children }: IChildren) => {
     <AuthContext.Provider
       value={{ 
         user,
+        error,
         logout,
         useCreateUserWithEmail,
         loginWithGoogle,
