@@ -1,13 +1,8 @@
 import React from "react";
 
-interface IPaginationProps {
-  docs: number;
-  docsPerPage: number;
-  currentPage: number;
-  setCurrentPage: (page: number) => void;
-}
-
 import { PaginationStyled, LiStyled } from "./styles";
+
+import { IPaginationProps } from "../../interfaces/Pagination";
 
 const Pagination = ({
   docs,
