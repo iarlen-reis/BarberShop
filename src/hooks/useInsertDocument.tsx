@@ -1,14 +1,10 @@
+import { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../services/firebase";
-import { useState } from "react";
+
+import { IDocument } from "../interfaces/useInsertDocument";
 
 import { useAuthContext } from "../context/AuthContext";
-
-interface IDocument {
-  service: string;
-  scheduledDate: string;
-  description: string;
-}
 
 export const createDocument = () => {
   const { user } = useAuthContext();
