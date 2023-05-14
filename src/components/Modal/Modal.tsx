@@ -7,6 +7,8 @@ import {
   CloseStyled,
 } from "./styles";
 
+import { IModal } from "../../interfaces/Modal";
+
 import { AiOutlineClose } from "react-icons/ai";
 
 import ErrorForm from "../ErrorForm/ErrorForm";
@@ -16,19 +18,13 @@ import { createDocument } from "../../hooks/useInsertDocument";
 
 import { toLocalDate } from "../../utils/transformDate";
 
-interface IFormData {
-  service: string;
-  description: string;
-  scheduledDate: string;
-}
-
 const Modal = () => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<IFormData>();
+  } = useForm<IModal>();
 
   const { isModalOpen, setModal } = useModalContext();
   const { loading, insertDocument } = createDocument();
@@ -40,7 +36,7 @@ const Modal = () => {
     setModal();
   };
 
-  const onSubmit = (data: IFormData) => {
+  const onSubmit = (data: IModal) => {
     data = toLocalDate(data);
 
     insertDocument(data);
