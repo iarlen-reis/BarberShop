@@ -16,33 +16,14 @@ import {
 
 import { app } from "../services/firebase";
 
+import {
+    IAuthContext,
+    ICreateUserWithEmail, 
+    IUserData,
+    IChildren
+} from '../interfaces/AuthContext'
+
 import Loading from "../components/Loading/Loading";
-
-interface IAuthContext {
-  user: User | null;
-  logout: () => void;
-  useCreateUserWithEmail: (userData: ICreateUserWithEmail) => void;
-  loginWithGoogle: () => Promise<User>;
-  loginUserWithEmail: (
-    userData: IUserData
-  ) => Promise<UserCredential>;
-  DeleteUser: () => void;
-}
-
-interface IChildren {
-  children: React.ReactNode;
-}
-
-interface ICreateUserWithEmail {
-  displayName: string;
-  displayEmail: string;
-  displayPassword: string;
-}
-
-interface IUserData {
-    displayEmail: string;
-    displayPassword: string;
-}
 
 const AuthContext = createContext<IAuthContext>({
   user: null,
@@ -53,7 +34,7 @@ const AuthContext = createContext<IAuthContext>({
     throw new Error("AuthContext não foi inicializado corretamente.");
   },
   DeleteUser: () => ({}),
-
+  
   });
 
 export const AuthProvider = ({ children }: IChildren) => {
