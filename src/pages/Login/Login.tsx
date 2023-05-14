@@ -23,10 +23,7 @@ import {
   ErrorStyled,
 } from "./styles";
 
-interface IFormData {
-  displayEmail: string;
-  displayPassword: string;
-}
+import { IFormData } from "../../interfaces/FormData";
 
 import { useAuthContext } from "../../context/AuthContext";
 
