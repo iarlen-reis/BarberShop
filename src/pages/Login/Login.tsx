@@ -23,7 +23,7 @@ import {
   ErrorStyled,
 } from "./styles";
 
-import { IFormData } from "../../interfaces/FormData";
+import { ILogin } from "../../interfaces/Login";
 
 import { useAuthContext } from "../../context/AuthContext";
 
@@ -32,13 +32,13 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormData>();
+  } = useForm<ILogin>();
 
   const { user, loginWithGoogle, loginUserWithEmail } = useAuthContext();
 
   const navigate = useNavigate();
 
-  const onSubmit = async (data: IFormData) => {
+  const onSubmit = async (data: ILogin) => {
     loginUserWithEmail(data).then(() => navigate("/"));
   };
 

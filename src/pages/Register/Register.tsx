@@ -11,6 +11,8 @@ import ErrorForm from "../../components/ErrorForm/ErrorForm";
 
 import * as EmailValidator from "email-validator";
 
+import { IRegister } from "../../interfaces/Register";
+
 import {
   RegiterStyled,
   InfoStyled,
@@ -38,7 +40,7 @@ const Register = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<IFormData>();
+  } = useForm<IRegister>();
 
   const watchPassword = watch("displayPassword");
 
