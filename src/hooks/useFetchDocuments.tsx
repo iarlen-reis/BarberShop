@@ -8,23 +8,9 @@ import {
 } from "firebase/firestore";
 import { db } from "../services/firebase";
 
+import {ISchedule, IUserDocuments} from '../interfaces/useFetchDocuments'
+
 import { useAuthContext } from "../context/AuthContext";
-
-interface ISchedule {
-  service: string;
-  description: string;
-  status: string;
-  username: string;
-  uid: string;
-  id: string;
-  createdAt: string;
-  scheduledDate: string;
-}
-
-interface IUserDocuments {
-  loading: boolean;
-  schedules: ISchedule[] | null;
-}
 
 export const getUserDocuments = (): IUserDocuments => {
   const [schedules, setSchedules] = useState<ISchedule[] | null>(null);
@@ -51,7 +37,6 @@ export const getUserDocuments = (): IUserDocuments => {
                 ({
                   id: doc.id,
                   ...doc.data(),
-                // eslint-disable-next-line prettier/prettier
                 } as ISchedule)
             )
           );
