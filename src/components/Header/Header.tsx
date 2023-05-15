@@ -43,7 +43,7 @@ const index = () => {
               <LogoStyled src={Logo} alt="Logo da página" />
             </Link>
           ) : (
-            <Link to="/login">
+            <Link to="/login" data-testid="logo">
               <LogoStyled src={Logo} alt="Logo da página" />
             </Link>
           )}
@@ -56,13 +56,16 @@ const index = () => {
               </li>
               <li>
                 <ProfileStyled onClick={() => setMobile(!mobile)}>
-                  <Link to="/profile">
+                  <Link to="/profile" data-testid="buttonProfile">
                     <CgProfile />
                   </Link>
                 </ProfileStyled>
               </li>
               <li>
-                <ButtonLogoutStyled onClick={handleLogout}>
+                <ButtonLogoutStyled
+                  onClick={handleLogout}
+                  data-testid="buttonLogout"
+                >
                   Sair
                 </ButtonLogoutStyled>
               </li>
@@ -70,7 +73,7 @@ const index = () => {
           ) : (
             <NavStyled mobile={mobile}>
               <li onClick={() => setMobile(false)}>
-                <Link to="/about">
+                <Link to="/about" data-testid="about">
                   <BsInfoCircle />
                 </Link>
               </li>

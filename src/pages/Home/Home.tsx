@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ContainerStyled } from "../../styles/Global";
 
 import { IoAddOutline } from "react-icons/io5";
