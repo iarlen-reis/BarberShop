@@ -5,6 +5,7 @@ const mockUser: IUser = {
   uid: "123",
   email: "test@test.com",
   displayName: "Test User",
+  photoURL: "",
 };
 
 export const mockAuthContextValue: IAuthContext = {
@@ -13,7 +14,7 @@ export const mockAuthContextValue: IAuthContext = {
   setError: () => vi.fn(),
   logout: () => vi.fn(),
   useCreateUserWithEmail: () => vi.fn(),
-  loginWithGoogle: () => vi.fn(),
+  loginWithGoogle: vi.fn().mockResolvedValue(Promise.resolve()),
   loginUserWithEmail: () => vi.fn(),
   DeleteUser: () => vi.fn(),
 };
