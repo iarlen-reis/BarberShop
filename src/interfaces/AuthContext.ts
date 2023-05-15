@@ -19,6 +19,7 @@ export interface IUser {
   uid: string;
   email: string;
   displayName: string;
+  photoURL: string;
 }
 
 export interface IAuthContext {
@@ -27,7 +28,7 @@ export interface IAuthContext {
   setError: (error: string) => void;
   logout: () => void;
   useCreateUserWithEmail: (userData: ICreateUserWithEmail) => void;
-  loginWithGoogle: () => Promise<User>;
+  loginWithGoogle: () => Promise<void>;
   loginUserWithEmail: (userData: IUserData) => void;
   DeleteUser: () => void;
 }

@@ -47,7 +47,9 @@ const Login = () => {
   };
 
   const handleLoginWithGoogle = () => {
-    loginWithGoogle().then(() => navigate("/"));
+    loginWithGoogle();
+    // Then removed
+    if (user) navigate("/");
   };
 
   useEffect(() => {

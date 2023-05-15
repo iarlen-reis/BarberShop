@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 import {
-  User,
   onAuthStateChanged,
   signOut,
   getAuth,
@@ -27,12 +26,13 @@ import {
 import Loading from "../components/Loading/Loading";
 
 export const AuthContext = createContext<IAuthContext>({
-  user: {uid: "", email: "", displayName: ""},
+  user: {uid: "", email: "", displayName: "", photoURL: ""},
   error: '',
   setError:() => ({}),
   logout: async () => ({}),
   useCreateUserWithEmail: () => ({}),
-  loginWithGoogle: () => Promise.resolve({} as User),
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  loginWithGoogle: async () => {},
   loginUserWithEmail: () => ({}),
   DeleteUser: () => ({}),
   
@@ -80,23 +80,25 @@ export const AuthProvider = ({ children }: IChildren) => {
   };
 
   // login with google.
-  const loginWithGoogle = async () => {
-      const provider = new GoogleAuthProvider();
-      const user = await signInWithPopup(auth, provider);
-
-      return user.user
+  const loginWithGoogle = async (): Promise<void> => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      // Tratamento de erro
+    } 
   };
+  
 
   // login using email.
   const loginUserWithEmail = async (data: IUserData) => {
     try {
-        const user = await signInWithEmailAndPassword(
+        await signInWithEmailAndPassword(
             auth,
             data.displayEmail,
             data.displayPassword,
           ) as UserCredential;
     
-          return user
     } catch (error: any) {
         if(error.message.includes('user-not-found')) {
             setError("Usuário não encontrado.")
