@@ -20,13 +20,14 @@ import {
     IAuthContext,
     ICreateUserWithEmail, 
     IUserData,
-    IChildren
+    IChildren,
+    IUser
 } from '../interfaces/AuthContext'
 
 import Loading from "../components/Loading/Loading";
 
-const AuthContext = createContext<IAuthContext>({
-  user: null,
+export const AuthContext = createContext<IAuthContext>({
+  user: {uid: "", email: "", displayName: ""},
   error: '',
   setError:() => ({}),
   logout: async () => ({}),
@@ -39,16 +40,22 @@ const AuthContext = createContext<IAuthContext>({
 
 export const AuthProvider = ({ children }: IChildren) => {
   const auth = getAuth(app);
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<IUser | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState("")
 
   // check if the user is logged in.
   useEffect(() => {
       const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
-      setLoading(false);
+        if(user) {
+            setUser(user as IUser);
+            setLoading(false);
+        } else {
+            setUser(null);
+        }
       });
+      setLoading(false);
+
       return unsubscribe;
   }, [auth]);
 
