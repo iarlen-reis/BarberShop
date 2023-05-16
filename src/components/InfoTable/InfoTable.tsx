@@ -59,7 +59,10 @@ const InfoTable = () => {
                   <td>{schedule.status}</td>
                   <td>
                     <BsSearch onClick={() => useFetchDocument(schedule.id)} />
-                    <MdDelete onClick={() => deleteDocument(schedule.id)} />
+                    <MdDelete
+                      onClick={() => deleteDocument(schedule.id)}
+                      data-testid="buttonDelete"
+                    />
                   </td>
                 </tr>
               ))}
