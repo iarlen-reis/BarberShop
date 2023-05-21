@@ -7,25 +7,23 @@ import { fireEvent, render } from "@testing-library/react";
 import "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
+const renderWithRouterAndTheme = () => {
+  return render(
+    <BrowserRouter>
+      <ThemeProvider theme={Theme}>
+        <Footer />
+      </ThemeProvider>
+    </BrowserRouter>,
+  );
+};
+
 describe("Footer Component", () => {
   it("should render component Footer", () => {
-    render(
-      <BrowserRouter>
-        <ThemeProvider theme={Theme}>
-          <Footer />
-        </ThemeProvider>
-      </BrowserRouter>,
-    );
+    renderWithRouterAndTheme();
   });
 
   it("should render github link in Footer", () => {
-    const { getByText } = render(
-      <BrowserRouter>
-        <ThemeProvider theme={Theme}>
-          <Footer />
-        </ThemeProvider>
-      </BrowserRouter>,
-    );
+    const { getByText } = renderWithRouterAndTheme();
 
     const gitHubButton = getByText("GitHub");
 
@@ -33,13 +31,7 @@ describe("Footer Component", () => {
   });
 
   it("should render the link to the /about page in Footer", () => {
-    const { getByText } = render(
-      <BrowserRouter>
-        <ThemeProvider theme={Theme}>
-          <Footer />
-        </ThemeProvider>
-      </BrowserRouter>,
-    );
+    const { getByText } = renderWithRouterAndTheme();
 
     const aboutLink = getByText("Sobre");
 
@@ -47,13 +39,7 @@ describe("Footer Component", () => {
   });
 
   it("should render link to vexels in Footer", () => {
-    const { getByText } = render(
-      <BrowserRouter>
-        <ThemeProvider theme={Theme}>
-          <Footer />
-        </ThemeProvider>
-      </BrowserRouter>,
-    );
+    const { getByText } = renderWithRouterAndTheme();
 
     const vexelsLink = getByText("br.vexels.com");
 
@@ -61,13 +47,7 @@ describe("Footer Component", () => {
   });
 
   it("should render link to Firebase in Footer", () => {
-    const { getByText } = render(
-      <BrowserRouter>
-        <ThemeProvider theme={Theme}>
-          <Footer />
-        </ThemeProvider>
-      </BrowserRouter>,
-    );
+    const { getByText } = renderWithRouterAndTheme();
 
     const firebaseLink = getByText("Firebase");
 
@@ -75,13 +55,7 @@ describe("Footer Component", () => {
   });
 
   it("should render link to github of developer in Footer", () => {
-    const { getByText } = render(
-      <BrowserRouter>
-        <ThemeProvider theme={Theme}>
-          <Footer />
-        </ThemeProvider>
-      </BrowserRouter>,
-    );
+    const { getByText } = renderWithRouterAndTheme();
 
     const githubDeveloperLink = getByText("By");
 
@@ -89,13 +63,7 @@ describe("Footer Component", () => {
   });
 
   it("should go to /about page when clicking about link", () => {
-    const { getByText } = render(
-      <BrowserRouter>
-        <ThemeProvider theme={Theme}>
-          <Footer />
-        </ThemeProvider>
-      </BrowserRouter>,
-    );
+    const { getByText } = renderWithRouterAndTheme();
 
     const AboutLink = getByText("Sobre");
 
