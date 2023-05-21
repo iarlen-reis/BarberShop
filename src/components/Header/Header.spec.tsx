@@ -11,25 +11,35 @@ import "@testing-library/jest-dom/extend-expect";
 import { AuthContext } from "../../context/AuthContext";
 import { mockAuthContextValue } from "../../__mocks__/UserMock";
 
-describe("Component Header", () => {
-  it("should render component Header", () => {
-    render(
+const renderWithRouterAndTheme = () => {
+  return render(
+    <BrowserRouter>
+      <ThemeProvider theme={Theme}>
+        <Header />
+      </ThemeProvider>
+    </BrowserRouter>,
+  );
+};
+
+const renderWithRouterThemeAndAuthetication = () => {
+  return render(
+    <AuthContext.Provider value={mockAuthContextValue}>
       <BrowserRouter>
         <ThemeProvider theme={Theme}>
           <Header />
         </ThemeProvider>
-      </BrowserRouter>,
-    );
+      </BrowserRouter>
+    </AuthContext.Provider>,
+  );
+};
+
+describe("Component Header", () => {
+  it("should render component Header", () => {
+    renderWithRouterAndTheme();
   });
 
   it("should display in the url /about when clicking on the about icon", () => {
-    const { getByTestId } = render(
-      <BrowserRouter>
-        <ThemeProvider theme={Theme}>
-          <Header />
-        </ThemeProvider>
-      </BrowserRouter>,
-    );
+    const { getByTestId } = renderWithRouterAndTheme();
 
     const aboutIcon = getByTestId("about");
 
@@ -39,13 +49,7 @@ describe("Component Header", () => {
   });
 
   it("should display the /login url when clicking on the logo.", () => {
-    const { getByTestId } = render(
-      <BrowserRouter>
-        <ThemeProvider theme={Theme}>
-          <Header />
-        </ThemeProvider>
-      </BrowserRouter>,
-    );
+    const { getByTestId } = renderWithRouterAndTheme();
 
     const aboutIcon = getByTestId("about");
 
@@ -59,13 +63,7 @@ describe("Component Header", () => {
   });
 
   it("should not display the logout button.", () => {
-    const { queryByTestId } = render(
-      <BrowserRouter>
-        <ThemeProvider theme={Theme}>
-          <Header />
-        </ThemeProvider>
-      </BrowserRouter>,
-    );
+    const { queryByTestId } = renderWithRouterAndTheme();
 
     const buttonLogout = queryByTestId("buttonLogout");
 
@@ -73,13 +71,7 @@ describe("Component Header", () => {
   });
 
   it("should not display the profile button.", () => {
-    const { queryByTestId } = render(
-      <BrowserRouter>
-        <ThemeProvider theme={Theme}>
-          <Header />
-        </ThemeProvider>
-      </BrowserRouter>,
-    );
+    const { queryByTestId } = renderWithRouterAndTheme();
 
     const buttonProfile = queryByTestId("buttonProfile");
 
@@ -87,15 +79,7 @@ describe("Component Header", () => {
   });
 
   it("should render profile button", () => {
-    const { getByTestId } = render(
-      <AuthContext.Provider value={mockAuthContextValue}>
-        <BrowserRouter>
-          <ThemeProvider theme={Theme}>
-            <Header />
-          </ThemeProvider>
-        </BrowserRouter>
-      </AuthContext.Provider>,
-    );
+    const { getByTestId } = renderWithRouterThemeAndAuthetication();
 
     const buttonProfile = getByTestId("buttonProfile");
 
@@ -103,15 +87,7 @@ describe("Component Header", () => {
   });
 
   it("should render logout button", () => {
-    const { getByTestId } = render(
-      <AuthContext.Provider value={mockAuthContextValue}>
-        <BrowserRouter>
-          <ThemeProvider theme={Theme}>
-            <Header />
-          </ThemeProvider>
-        </BrowserRouter>
-      </AuthContext.Provider>,
-    );
+    const { getByTestId } = renderWithRouterThemeAndAuthetication();
 
     const logoutButton = getByTestId("buttonLogout");
 
