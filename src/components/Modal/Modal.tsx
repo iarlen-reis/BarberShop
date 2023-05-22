@@ -56,7 +56,10 @@ const Modal = () => {
       <FormStyled onSubmit={handleSubmit(onSubmit)}>
         <label>
           <span>Serviço:</span>
-          <select {...register("service", { required: true })}>
+          <select
+            {...register("service", { required: true })}
+            data-testid="selector"
+          >
             <option value="">Selecione o serviço</option>
             <option value="corte">Corte</option>
             <option value="barba">Barba</option>
@@ -74,6 +77,7 @@ const Modal = () => {
             placeholder="Corte Militar, Social.."
             autoComplete="off"
             {...register("description", { required: true })}
+            data-testid="description"
           />
           {errors.description && errors.description.type === "required" && (
             <ErrorForm message="A Descrição é obrigatória." />
@@ -84,6 +88,7 @@ const Modal = () => {
             type="datetime-local"
             min="01-01-2023"
             {...register("scheduledDate", { required: true })}
+            data-testid="scheduledDate"
           />
           {errors.scheduledDate && errors.scheduledDate.type === "required" && (
             <ErrorForm message="Selecione a data de agendamento." />
@@ -94,7 +99,10 @@ const Modal = () => {
           <button>{loading ? "Agendando..." : "Agendar"}</button>
         </ButtonContainer>
         <CloseStyled>
-          <AiOutlineClose onClick={(event) => closeModal(event)} />
+          <AiOutlineClose
+            onClick={(event) => closeModal(event)}
+            data-testid="closeButton"
+          />
         </CloseStyled>
       </FormStyled>
     </ModalStyled>
