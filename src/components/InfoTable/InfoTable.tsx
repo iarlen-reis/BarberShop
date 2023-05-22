@@ -12,6 +12,7 @@ import ServiceDetails from "../ServiceDetails/ServiceDetails";
 
 import { useModalContext } from "../../context/ModalContext";
 import { deleteDocument } from "../../hooks/useDeleteDocument";
+import { useFetchDocument } from "../../hooks/useFetchDocument";
 
 import Pagination from "../Pagination/Pagination";
 
@@ -20,8 +21,9 @@ const InfoTable = () => {
   const [docsPerPage, setDocsPerPage] = useState(9);
 
   const { schedules, loading } = getUserDocuments();
+  const { getDocument, document } = useFetchDocument();
 
-  const { useFetchDocument, filtered } = useModalContext();
+  const { filtered } = useModalContext();
 
   if (loading) return <Loading />;
 
@@ -51,14 +53,17 @@ const InfoTable = () => {
               currentDocs?.length > 0 &&
               currentDocs.map((schedule) => (
                 <tr key={schedule.id}>
-                  <td onClick={() => useFetchDocument(schedule.id)}>
+                  <td onClick={() => getDocument(schedule.id)}>
                     {schedule.service}
                   </td>
                   <td>{schedule.createdAt}</td>
                   <td>{schedule.scheduledDate}</td>
                   <td>{schedule.status}</td>
                   <td>
-                    <BsSearch onClick={() => useFetchDocument(schedule.id)} />
+                    <BsSearch
+                      onClick={() => getDocument(schedule.id)}
+                      data-testid="buttonModal"
+                    />
                     <MdDelete
                       onClick={() => deleteDocument(schedule.id)}
                       data-testid="buttonDelete"
@@ -92,7 +97,7 @@ const InfoTable = () => {
           setCurrentPage={setCurrentPage}
         />
       )}
-      <ServiceDetails />
+      <ServiceDetails document={document} />
     </>
   );
 };

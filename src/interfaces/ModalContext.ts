@@ -16,12 +16,10 @@ export interface IDocument {
 export interface IModalContext {
   isModalOpen: boolean;
   setModal: () => void;
-  modalDetails: boolean;
-  document: IDocument;
-  useFetchDocument: (id: string) => void;
-  setModalDetails: (state: boolean) => void;
   filtered: string;
+  modalDetails: boolean;
   setFiltered: (filter: string) => void;
   setFilter: (state: boolean) => void;
+  setModalDetails: (state: boolean) => void;
   filter: boolean;
 }

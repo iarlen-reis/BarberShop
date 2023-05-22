@@ -11,11 +11,16 @@ import {
 
 import { AiOutlineClose } from "react-icons/ai";
 
-import { useModalContext } from "../../context/ModalContext";
 import { deleteDocument } from "../../hooks/useDeleteDocument";
+import { useModalContext } from "../../context/ModalContext";
+import { IDocument } from "../../interfaces/ModalContext";
 
-const ServiceDetails = () => {
-  const { modalDetails, document, setModalDetails } = useModalContext();
+interface IServiceDetails {
+  document: IDocument;
+}
+
+const ServiceDetails = ({ document }: IServiceDetails) => {
+  const { setModalDetails, modalDetails } = useModalContext();
 
   const handleDeleteDocument = (id: string) => {
     deleteDocument(id);
