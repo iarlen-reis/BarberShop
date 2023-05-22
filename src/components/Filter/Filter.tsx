@@ -20,7 +20,7 @@ const Filter = ({ isVisible }: IFilterProps) => {
       onChange={(event) => handleSelect(event)}
     >
       <option value="">Todos</option>
-      <option value="pendente">Pedentes</option>
+      <option value="pendente">Pendentes</option>
       <option value="cancelado">Cancelados</option>
       <option value="finalizado">Finalizados</option>
     </FilterStyled>
