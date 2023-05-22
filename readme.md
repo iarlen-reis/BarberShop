@@ -30,6 +30,7 @@
 - [x] Filtro agendamentos por status.
 - [x] Paginação (9 serviços por página).
 - [x] Quantidade de serviços no perfil (pendentes, cancelados e finalizados).
+- [x] Testes unitários dos components.
 - [x] Responsividade.
 - [ ] Painel administrativo (gereciador para o barbeiro).
 - [ ] Portfolio de serviços (Serviços do barbeiro).
